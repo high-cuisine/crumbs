@@ -1,0 +1,1 @@
+export { PromoDecorations } from './PromoDecorations';

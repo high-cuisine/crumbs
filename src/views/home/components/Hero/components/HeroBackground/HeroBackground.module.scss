@@ -1,0 +1,197 @@
+@import '../../../../../../shared/styles/mixins';
+
+.backgroundViewport {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.background {
+  position: absolute;
+  inset: 0;
+}
+
+.blobWrapperDesktop {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  width: max-content;
+  height: 602px;
+}
+
+.blobWrapperMobile {
+  display: none;
+}
+
+.blobDesktop,
+.blobDesktopMirror {
+  flex: none;
+  width: 1440px;
+  height: 602px;
+  display: block;
+}
+
+.blobDesktopMirror {
+  transform: scaleX(-1);
+}
+
+.blobMobile,
+.blobMobileMirror {
+  flex: none;
+  width: 402px;
+  height: 531px;
+  display: block;
+}
+
+.blobMobileMirror {
+  transform: scaleX(-1);
+}
+
+.donut,
+.circle,
+.wave {
+  position: absolute;
+  height: auto;
+  max-width: none;
+}
+
+.donut {
+  top: -23%;
+  left: -8%;
+  width: 57%;
+  max-width: 576px;
+}
+
+.circle {
+  top: -32%;
+  left: 16.5%;
+  width: 56%;
+  max-width: 542px;
+}
+
+.wave {
+  top: -65%;
+  left: -4.8%;
+  width: 110%;
+  max-width: 1603px;
+}
+
+@media (min-width: 1440px) {
+  .backgroundViewport {
+    inset: 0 auto auto 50%;
+    top: 0;
+    height: 100vh;
+    left: 50%;
+    right: auto;
+    width: 100vw;
+    transform: translateX(-50%);
+    overflow: visible;
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1024px) {
+  .background {
+    inset: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 531px;
+    // background: #fbd3dd;
+  }
+
+  .blobWrapperDesktop {
+    display: flex;
+    height: 531px;
+  }
+
+  .blobDesktop,
+  .blobDesktopMirror {
+    height: 531px;
+  }
+
+  .blobWrapperMobile {
+    display: none;
+  }
+
+  .donut,
+  .circle,
+  .wave {
+    display: none;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 900px) {
+  .background {
+    inset: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 500px;
+    // background: #fbd3dd;
+  }
+
+  .blobWrapperDesktop {
+    display: flex;
+    height: 500px;
+  }
+
+  .blobDesktop,
+  .blobDesktopMirror {
+    height: 500px;
+  }
+
+  .blobWrapperMobile {
+    display: none;
+  }
+
+  .donut,
+  .circle,
+  .wave {
+    display: none;
+  }
+}
+
+@include respond(mobile) {
+  .background {
+    inset: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--hero-blob-height, 531px);
+    // background: #fbd3dd;
+    overflow: hidden;
+  }
+
+  .blobWrapperDesktop {
+    display: none;
+  }
+
+  .blobWrapperMobile {
+    display: flex;
+    align-items: flex-end;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: max-content;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .blobMobile,
+  .blobMobileMirror {
+    flex: none;
+    width: 402px;
+    height: auto;
+    aspect-ratio: 402 / 531;
+  }
+
+  .donut,
+  .circle,
+  .wave {
+    display: none;
+  }
+}

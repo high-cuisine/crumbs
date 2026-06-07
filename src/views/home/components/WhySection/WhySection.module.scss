@@ -1,0 +1,44 @@
+@import '../../../../shared/styles/variables';
+@import '../../../../shared/styles/mixins';
+
+.section {
+  padding: 0 0 48px;
+  background: $color-white;
+}
+
+.inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 514px) minmax(0, 1fr);
+  gap: clamp(24px, 2.4vw, 34px);
+  align-items: start;
+  min-height: 515px;
+  padding-top: 82px;
+}
+
+@include respond(tablet) {
+  .section {
+    padding-bottom: 36px;
+  }
+
+  .inner {
+    grid-template-columns: 1fr;
+    gap: 22px;
+    min-height: auto;
+    padding-top: 44px;
+  }
+}
+
+@include respond(mobile) {
+  .section {
+    padding-bottom: 28px;
+  }
+
+  .inner {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    min-height: auto;
+    padding-top: 24px;
+    align-items: start;
+  }
+}

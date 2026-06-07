@@ -1,0 +1,78 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.slider {
+  --visible-count: 3;
+  --slide-gap: 24px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--slide-gap);
+}
+
+.viewport {
+  overflow: hidden;
+  touch-action: pan-y;
+  user-select: none;
+}
+
+.track {
+  display: flex;
+  gap: var(--slide-gap);
+  transition: transform 0.35s ease;
+  will-change: transform;
+}
+
+.slide {
+  flex: 0 0 calc((100% - (var(--visible-count) - 1) * var(--slide-gap)) / var(--visible-count));
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  outline: none;
+
+  &:focus-visible .imageWrap {
+    box-shadow: 0 0 0 2px rgba(123, 49, 124, 0.35), 0 0 12px rgba(0, 0, 0, 0.09);
+  }
+}
+
+.imageWrap {
+  position: relative;
+  width: min(100%, 348px);
+  aspect-ratio: 348 / 308;
+  border-radius: $radius-box;
+  background: $color-gray-card;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.09);
+  overflow: hidden;
+  transition: opacity $transition-base, transform $transition-base;
+}
+
+.image {
+  object-fit: cover;
+}
+
+.slide[data-active='false'] .imageWrap {
+  opacity: 0.9;
+  transform: scale(0.97);
+}
+
+@include respond(mobile) {
+  .slider {
+    --visible-count: 1;
+    --slide-gap: 0px;
+    gap: 8px;
+  }
+
+  .imageWrap {
+    width: min(100%, 320px);
+    aspect-ratio: 320 / 283;
+    border-radius: 11px;
+  }
+
+  .arrowLeft {
+    margin-right: -4px;
+  }
+
+  .arrowRight {
+    margin-left: -4px;
+  }
+}

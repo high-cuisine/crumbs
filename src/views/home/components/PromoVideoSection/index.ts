@@ -1,0 +1,1 @@
+export { PromoVideoSection } from './PromoVideoSection';

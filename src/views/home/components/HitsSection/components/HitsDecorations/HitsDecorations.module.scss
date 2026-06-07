@@ -1,0 +1,39 @@
+@import '../../../../../../shared/styles/mixins';
+
+.decorations {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.blobLeft,
+.blobRight {
+  position: absolute;
+  height: auto;
+}
+
+.blobLeft {
+  top: 0;
+  left: 0;
+  width: clamp(160px, 17.3vw, 280px);
+}
+
+.blobRight {
+  right: 0;
+  bottom: 0;
+  width: clamp(96px, 10.3vw, 166px);
+}
+
+@include respond(mobile) {
+  .blobRight {
+    display: none;
+  }
+
+  .blobLeft {
+    top: 12px;
+    left: -24px;
+    width: 96px;
+  }
+}

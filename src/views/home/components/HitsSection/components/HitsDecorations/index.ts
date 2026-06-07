@@ -1,0 +1,1 @@
+export { HitsDecorations } from './HitsDecorations';

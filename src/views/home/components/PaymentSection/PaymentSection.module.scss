@@ -1,0 +1,117 @@
+@import '../../../../shared/styles/variables';
+@import '../../../../shared/styles/mixins';
+
+.section {
+  padding: $section-gap-desktop 0 $section-gap-desktop-end;
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: minmax(260px, 335px) minmax(320px, 547px);
+  column-gap: clamp(32px, 4.5vw, 125px);
+  justify-content: space-between;
+  align-items: start;
+  min-height: 344px;
+  width: 100%;
+  max-width: $container-max;
+  margin: 0 auto;
+  padding-inline: clamp(1.6875rem, -3.6602rem + 22.8169vw, 16.875rem);
+  box-sizing: border-box;
+}
+
+.media {
+  width: 100%;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  padding-top: 0;
+}
+
+.button {
+  width: 258px;
+  max-width: 100%;
+
+  a,
+  button {
+    min-height: 61px;
+    padding: 16.28px 31px;
+    font-family: $font-body;
+    font-size: 21.28px;
+    font-weight: 700;
+    line-height: 1.219;
+    letter-spacing: 0;
+  }
+}
+
+@include respond(tablet) {
+  .inner {
+    grid-template-columns: 1fr;
+    row-gap: 20px;
+    justify-items: start;
+    text-align: left;
+    min-height: auto;
+    padding-inline: clamp(24px, 4vw, 40px);
+  }
+
+  .content {
+    order: 1;
+    align-items: flex-start;
+    gap: 22px;
+  }
+
+  .media {
+    order: 2;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@include respond(tablet) {
+  .section {
+    padding: $section-gap-tablet 0 $section-gap-tablet;
+  }
+}
+
+@include respond(mobile) {
+  .section {
+    padding: $section-gap-mobile 0 $section-gap-mobile;
+  }
+
+  .inner {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    align-items: start;
+    padding-inline: 20px;
+  }
+
+  .content {
+    order: 1;
+    align-items: flex-start;
+    text-align: left;
+    padding: 0;
+    gap: 16px;
+  }
+
+  .media {
+    order: 2;
+    width: 100%;
+    padding: 0;
+  }
+
+  .button {
+    width: min(100%, 190px);
+
+    a,
+    button {
+      min-height: 50px;
+      padding: 12px 22px;
+      font-family: $font-body;
+      font-size: 17px;
+      font-weight: 700;
+      line-height: 1.219;
+    }
+  }
+}

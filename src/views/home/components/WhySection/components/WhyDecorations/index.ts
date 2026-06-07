@@ -1,0 +1,1 @@
+export { WhyDecorations } from './WhyDecorations';

@@ -1,0 +1,26 @@
+@import '../../../../../../shared/styles/mixins';
+
+.grid {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+}
+
+@include respond(tablet) {
+  .grid {
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    @include hide-scrollbar;
+  }
+}
+
+@include respond(mobile) {
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px 12px;
+  }
+}

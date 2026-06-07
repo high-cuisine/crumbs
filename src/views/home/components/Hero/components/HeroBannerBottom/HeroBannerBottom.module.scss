@@ -1,0 +1,43 @@
+@import '../../../../../../shared/styles/mixins';
+
+$design-width: 1440px;
+$hook-width: 124px;
+$ring-width: 154px;
+
+.bannerBottom {
+  position: absolute;
+  top: var(--hero-blob-height);
+  left: 0;
+  right: 0;
+  z-index: 2;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.hook,
+.ring {
+  position: absolute;
+  top: 0;
+  height: auto;
+}
+
+.hook {
+  left: 0;
+  width: clamp(44px, calc(#{$hook-width} / #{$design-width} * 100vw), #{$hook-width});
+}
+
+.ring {
+  right: 0;
+  width: clamp(52px, calc(#{$ring-width} / #{$design-width} * 100vw), #{$ring-width});
+}
+
+@include respond(mobile) {
+  .bannerBottom {
+    overflow: hidden;
+  }
+
+  .ring {
+    top: -20%;
+    width: clamp(52px, calc(#{$ring-width} / #{$design-width} * 100vw), 68px);
+  }
+}

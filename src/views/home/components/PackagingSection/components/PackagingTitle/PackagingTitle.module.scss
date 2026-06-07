@@ -1,0 +1,14 @@
+@import '../../../../../../shared/styles/mixins';
+
+.title {
+  color: rgba(0, 0, 0, 0.43);
+  text-align: center;
+}
+
+@include respond(mobile) {
+  .title {
+    font-size: 18px;
+    line-height: 1.37;
+    padding: 0 12px;
+  }
+}

@@ -1,0 +1,22 @@
+@import '../../../../../../shared/styles/mixins';
+
+.decorations {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.ring {
+  position: absolute;
+  top: clamp(100px, 10.4vw, 150px);
+  right: -150px;
+  width: clamp(80px, 9.1vw, 132px);
+  height: auto;
+  opacity: 0.71;
+}
+
+@include respond(mobile) {
+  .decorations {
+    display: none;
+  }
+}

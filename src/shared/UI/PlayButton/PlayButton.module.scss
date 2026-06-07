@@ -1,0 +1,21 @@
+@import '../../styles/variables';
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  border: 2px solid rgba(255, 255, 255, 0.71);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  color: $color-white;
+  cursor: pointer;
+  backdrop-filter: blur(2px);
+  transition: transform $transition-base, background $transition-base;
+
+  &:hover {
+    transform: scale(1.05);
+    background: rgba(255, 255, 255, 0.25);
+  }
+}

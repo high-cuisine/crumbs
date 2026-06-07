@@ -1,0 +1,58 @@
+@import '../../../../../../shared/styles/variables';
+@import '../../../../../../shared/styles/mixins';
+
+.gallery {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 20px;
+  row-gap: 24px;
+  width: min(100%, 531px);
+  margin-left: auto;
+}
+
+.item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 17px;
+  background: $color-white;
+
+  &:nth-child(1),
+  &:nth-child(2) {
+    aspect-ratio: 255 / 187;
+  }
+
+  &:nth-child(3),
+  &:nth-child(4) {
+    aspect-ratio: 256 / 183;
+  }
+
+}
+
+.image {
+  object-fit: cover;
+}
+
+@include respond(mobile) {
+  .gallery {
+    width: 100%;
+    margin-left: 0;
+    column-gap: 12px;
+    row-gap: 12px;
+  }
+
+  .item {
+    border-radius: 11px;
+
+    &:nth-child(1),
+    &:nth-child(2) {
+      aspect-ratio: 165 / 121;
+    }
+
+    &:nth-child(3),
+    &:nth-child(4) {
+      aspect-ratio: 165 / 121;
+    }
+  }
+}

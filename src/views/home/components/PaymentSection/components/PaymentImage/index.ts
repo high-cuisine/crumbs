@@ -1,0 +1,1 @@
+export { PaymentImage } from './PaymentImage';

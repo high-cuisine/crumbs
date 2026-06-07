@@ -1,0 +1,1 @@
+export { HitsSection } from './HitsSection';

@@ -1,0 +1,1 @@
+export { HitsProductItem } from './HitsProductItem';

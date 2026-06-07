@@ -1,0 +1,1 @@
+export { HitsDescription } from './HitsDescription';

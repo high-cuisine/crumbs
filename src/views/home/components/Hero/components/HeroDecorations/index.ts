@@ -1,0 +1,1 @@
+export { HeroDecorations } from './HeroDecorations';

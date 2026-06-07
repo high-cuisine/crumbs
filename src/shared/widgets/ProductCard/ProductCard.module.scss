@@ -1,0 +1,64 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  min-width: 199px;
+  scroll-snap-align: start;
+}
+
+.imageWrap {
+  position: relative;
+  width: 100%;
+  max-width: 199px;
+  aspect-ratio: 199 / 325;
+  border-radius: $radius-product;
+  background: $color-pink-card;
+  overflow: hidden;
+}
+
+.image {
+  object-fit: cover;
+}
+
+.name {
+  max-width: 140px;
+  font-size: 25px;
+  line-height: 1.28;
+  text-align: center;
+  white-space: pre-line;
+}
+
+.empty {
+  min-width: 199px;
+  aspect-ratio: 199 / 325;
+  border-radius: $radius-product;
+  background: $color-pink-card;
+}
+
+.card[data-variant='mobile'] {
+  min-width: 149px;
+  flex: 0 0 149px;
+  gap: 12px;
+
+  .imageWrap {
+    max-width: 149px;
+    aspect-ratio: 149 / 244;
+    border-radius: $radius-product-mobile;
+  }
+
+  .name {
+    max-width: 110px;
+    font-size: 16px;
+    line-height: 1.35;
+  }
+}
+
+@include respond(mobile) {
+  .empty {
+    display: none;
+  }
+}

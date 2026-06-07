@@ -1,0 +1,1 @@
+export { DeliveryText } from './DeliveryText';

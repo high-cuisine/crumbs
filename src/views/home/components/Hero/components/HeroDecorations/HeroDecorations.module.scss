@@ -1,0 +1,372 @@
+@import '../../../../../../shared/styles/mixins';
+
+$hero-desktop-max-width: 1440px;
+
+.decorations {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.scribble,
+.scribbleTop,
+.scribbleSecondary,
+.blurCircle,
+.ring,
+.zigzag,
+.crumbOne,
+.crumbTwo,
+.crumbThree,
+.crumbFour,
+.crumbFive {
+  position: absolute;
+  height: auto;
+}
+
+.scribble {
+  top: 4.8%;
+  left: 46%;
+  width: 50%;
+  max-width: 736px;
+  z-index: 1;
+}
+
+.scribbleTop,
+.scribbleSecondary {
+  display: none;
+}
+
+.blurCircle {
+  top: 17.3%;
+  left: 2%;
+  width: 10%;
+  max-width: 122px;
+  z-index: 0;
+}
+
+.ring {
+  top: 4.5%;
+  left: 79%;
+  width: 20.6%;
+  max-width: 253px;
+  z-index: 0;
+}
+
+.zigzag {
+  display: none;
+}
+
+.crumbOne {
+  top: 51.9%;
+  left: 4.6%;
+  width: 2.6%;
+  max-width: 40px;
+}
+
+.crumbTwo {
+  top: 79.9%;
+  left: 8.5%;
+  width: 2.5%;
+  max-width: 40px;
+}
+
+.crumbThree {
+  top: 12.5%;
+  left: 50.2%;
+  width: 1.5%;
+  max-width: 40px;
+}
+
+.crumbFour {
+  top: 53.2%;
+  left: 53.2%;
+  width: 1.1%;
+  max-width: 40px;
+}
+
+.crumbFive {
+  top: 52.2%;
+  left: 88%;
+  width: 2.2%;
+  max-width: 40px;
+}
+
+.cookieImage {
+  object-fit: contain;
+}
+
+.cookieSecondary {
+  position: absolute;
+  top: 45.7%;
+  left: 22%;
+  z-index: 2;
+  width: 33.8%;
+  max-width: 494px;
+  max-height: 424px;
+  aspect-ratio: 494 / 424;
+}
+
+.cookieMain {
+  position: absolute;
+  top: -5%;
+  left: 50.6%;
+  z-index: 3;
+  width: 45.4%;
+  max-width: 662px;
+  max-height: 678px;
+  aspect-ratio: 662 / 678;
+}
+
+@media (min-width: 1025px) {
+  .decorations {
+    max-width: $hero-desktop-max-width;
+    margin-inline: auto;
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1024px) {
+  .decorations {
+    inset: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: auto;
+    // совпадает с высотой розового blob в HeroBackground
+    height: 531px;
+    overflow: visible;
+  }
+
+  .scribble {
+    top: 6%;
+    left: 50%;
+    width: 480px;
+    transform: translateX(-50%);
+    opacity: 0.95;
+  }
+
+  .blurCircle {
+    display: none;
+  }
+
+  .ring {
+    display: none;
+  }
+
+  .zigzag {
+    display: none;
+  }
+
+  .crumbOne {
+    top: 42%;
+    left: 18%;
+    width: 22px;
+  }
+
+  .crumbTwo {
+    top: 58%;
+    left: 8%;
+    width: 24px;
+  }
+
+  .crumbThree {
+    top: 28%;
+    left: 62%;
+    width: 18px;
+  }
+
+  .crumbFour {
+    top: 52%;
+    left: 72%;
+    width: 16px;
+  }
+
+  .crumbFive {
+    display: none;
+  }
+
+  .cookieSecondary {
+    top: auto;
+    bottom: 30%;
+    left: -4%;
+    width: 260px;
+    transform: scale(1.05) rotate(-14deg);
+  }
+
+  .cookieMain {
+    top: auto;
+    bottom: 28%;
+    left: auto;
+    right: -4%;
+    width: 320px;
+    transform: none;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 900px) {
+  .decorations {
+    inset: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: auto;
+    height: 500px;
+    overflow: visible;
+  }
+
+  .scribble {
+    top: 8%;
+    left: 50%;
+    width: 420px;
+    transform: translateX(-50%);
+    opacity: 0.95;
+  }
+
+  .blurCircle,
+  .ring,
+  .zigzag {
+    display: none;
+  }
+
+  .crumbOne {
+    top: 44%;
+    left: 18%;
+    width: 18px;
+  }
+
+  .crumbTwo {
+    top: 60%;
+    left: 8%;
+    width: 20px;
+  }
+
+  .crumbThree {
+    top: 30%;
+    left: 62%;
+    width: 16px;
+  }
+
+  .crumbFour {
+    top: 54%;
+    left: 72%;
+    width: 14px;
+  }
+
+  .crumbFive {
+    display: none;
+  }
+
+  .cookieSecondary {
+    top: auto;
+    bottom: 27%;
+    left: -8%;
+    width: 220px;
+    transform: scale(1.04) rotate(-14deg);
+  }
+
+  .cookieMain {
+    top: auto;
+    bottom: 24%;
+    left: auto;
+    right: -10%;
+    width: 280px;
+    transform: none;
+  }
+}
+
+@include respond(mobile) {
+  .decorations {
+    inset: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: auto;
+    height: var(--hero-blob-height, clamp(420px, 132vw, 531px));
+    overflow: visible;
+  }
+
+  .scribble {
+    display: none;
+  }
+
+  .scribbleTop {
+    display: block;
+    top: 9.6%;
+    left: 8%;
+    width: 80.8%;
+    z-index: 1;
+  }
+
+  .scribbleSecondary {
+    display: block;
+    top: 73.6%;
+    left: 8%;
+    width: 51.6%;
+    z-index: 1;
+  }
+
+  .blurCircle {
+    display: none;
+  }
+
+  .ring {
+    display: none;
+  }
+
+  .zigzag {
+    display: none;
+  }
+
+  .crumbOne {
+    top: 52%;
+    left: 12%;
+    width: clamp(14px, 4vw, 22px);
+    z-index: 2;
+  }
+
+  .crumbTwo {
+    top: 68%;
+    left: 4%;
+    width: clamp(16px, 4.5vw, 24px);
+    z-index: 2;
+  }
+
+  .crumbThree {
+    top: 38%;
+    left: 58%;
+    width: clamp(12px, 3.5vw, 18px);
+    z-index: 2;
+  }
+
+  .crumbFour {
+    top: 62%;
+    left: 68%;
+    width: clamp(10px, 3vw, 16px);
+    z-index: 2;
+  }
+
+  .crumbFive {
+    display: block;
+    top: 48%;
+    left: 82%;
+    width: clamp(12px, 3.5vw, 18px);
+    z-index: 2;
+  }
+
+  .cookieSecondary {
+    top: auto;
+    bottom: 15%;
+    left: -27%;
+    width: clamp(170px, 52vw, 240px);
+    transform: scale(1.5) rotate(-31deg);
+  }
+
+  .cookieMain {
+    top: auto;
+    bottom: 15%;
+    left: auto;
+    right: -20%;
+    width: clamp(210px, 64vw, 300px);
+    transform: none;
+  }
+}

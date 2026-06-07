@@ -1,0 +1,29 @@
+@import '../../../../../../shared/styles/variables';
+@import '../../../../../../shared/styles/mixins';
+
+.text {
+  max-width: 547px;
+}
+
+.copy {
+  margin: 0;
+  font-family: $font-alt;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.219;
+  color: $color-black;
+  text-align: left;
+  white-space: pre-line;
+}
+
+@include respond(mobile) {
+  .text {
+    max-width: 100%;
+  }
+
+  .copy {
+    font-size: 16px;
+    line-height: 1.35;
+    text-align: left;
+  }
+}

@@ -1,0 +1,50 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.button {
+  @include pill-button-base;
+}
+
+.md {
+  min-height: 61px;
+  padding: 16px 31px;
+  font-size: 21px;
+  line-height: 1.22;
+}
+
+.lg {
+  min-height: 61px;
+  padding: 16px 43px;
+  font-size: 21px;
+  line-height: 1.22;
+}
+
+.primary {
+  background: $gradient-button;
+  color: $color-white;
+  box-shadow: $shadow-button;
+}
+
+.secondary {
+  background: $color-white;
+  color: $color-button-text;
+  box-shadow:
+    0 4px 4px rgba(0, 0, 0, 0.25),
+    inset 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.outline {
+  background: transparent;
+  color: $color-button-text;
+  border: 2px solid $color-pink-soft;
+}
+
+@include respond(mobile) {
+  .md,
+  .lg {
+    min-height: 48px;
+    padding: 12px 24px;
+    font-size: 16px;
+    line-height: 1.22;
+  }
+}

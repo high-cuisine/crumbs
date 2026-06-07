@@ -1,0 +1,1 @@
+export { PackagingSlider } from './PackagingSlider';

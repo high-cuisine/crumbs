@@ -1,0 +1,115 @@
+---
+alwaysApply: true
+description: Архитектура mini-site — тонкие компоненты, декомпозиция, shared/UI, shared/widgets, views
+globs:
+  - mini-site/**/*
+---
+
+# mini-site — архитектура и декомпозиция
+
+Проект: Next.js App Router, TypeScript, **только `*.module.scss`**.
+
+## Структура каталогов
+
+```
+src/
+├── app/                    # только layout, page, route handlers
+├── shared/
+│   ├── UI/                 # атомарные UI (Button, Icon, Typography…)
+│   ├── widgets/            # крупные переиспользуемые блоки (Header, Footer, ProductCard…)
+│   ├── styles/             # _variables.scss, _mixins.scss (не компонентные стили)
+│   ├── helpers/            # чистые функции без React
+│   ├── hooks/              # хуки, общие для нескольких страниц/виджетов
+│   └── store/              # глобальный клиентский state (Zustand и т.п.)
+└── views/
+    └── {pageName}/         # НЕ src/pages — конфликт с Next.js Pages Router
+        ├── {PageName}.tsx
+        ├── {PageName}.module.scss
+        ├── components/     # секции и их подкомпоненты
+        ├── hooks/          # хуки только этой страницы
+        ├── helpers/        # константы, форматтеры, мапперы страницы
+        └── store/          # state только этой страницы (если нужен)
+```
+
+## Главный принцип: тонкие компоненты
+
+**Компонент — это композиция, не место для логики.**
+
+- Файл компонента **короткий**: JSX + пропсы + 1–2 вызова хуков максимум.
+- Если в `.tsx` больше ~40–50 строк — **разбей** на подкомпоненты, hook или helper.
+- Если есть `useState` / `useEffect` / обработчики событий с нетривиальной логикой — **вынеси в hook**.
+- Если есть вычисления, форматирование, фильтрация, маппинг данных — **вынеси в helper**.
+- Если state нужен нескольким несвязанным компонентам на странице — **вынеси в store** (`views/{page}/store` или `shared/store`).
+
+### Что куда
+
+| Слой | Назначение | Пример |
+|------|------------|--------|
+| `shared/UI` | Кнопка, текст, иконка, input — без бизнес-логики | `Button`, `Icon` |
+| `shared/widgets` | Сборка UI + минимальная логика виджета | `Header`, `ProductCard` |
+| `views/.../components` | Секции страницы, только композиция | `Hero`, `HitsSection` |
+| `views/.../components/X/components` | Подблоки секции | `HeroContent`, `HeroDecorations` |
+| `views/.../hooks` | Логика страницы с React | `usePackagingSlider` |
+| `views/.../helpers` | Константы, pure functions | `constants.ts`, `formatPhone.ts` |
+| `views/.../store` | Клиентский state страницы | `useCartStore` |
+| `shared/store` | Глобальный state (корзина, auth, theme) | `useAppStore` |
+
+## Правила декомпозиции секций
+
+Каждая секция страницы — **отдельная папка**:
+
+```
+views/home/components/Hero/
+├── Hero.tsx
+├── Hero.module.scss
+├── index.ts
+└── components/
+    ├── HeroContent/
+    └── HeroDecorations/
+```
+
+- Секция **не содержит** разметку подблоков inline — только импорты дочерних компонентов.
+- Каждый подкомпонент: `{Name}.tsx`, `{Name}.module.scss`, `index.ts`.
+- Общие для секции константы — `Hero/helpers/` или page-level `helpers/`.
+
+## Стили
+
+- **Только** `ComponentName.module.scss` рядом с компонентом.
+- Глобальные переменные/миксины: `@use '../../styles/variables'` (от `shared/UI`) или корректный относительный путь из `views/`.
+- Запрещены: `globals.css`, styled-components, Tailwind (если не добавлен явно), inline-стили кроме динамики (transform, CSS variables).
+- Цвета, шрифты, breakpoints — из `shared/styles/_variables.scss` и `_mixins.scss`.
+
+## Импорты
+
+```typescript
+import { Button } from '@/shared/UI/Button';
+import { Header } from '@/shared/widgets/Header';
+import { HITS_PRODUCTS } from '@/views/home/helpers';
+import { usePackagingSlider } from '@/views/home/hooks';
+```
+
+- Алиас `@/` → `src/`.
+- Barrel `index.ts` в каждой папке компонента.
+- В barrel **не** использовать `export *` в файлах, которые Next может считать page-модулями — только named exports.
+
+## Server vs Client
+
+- По умолчанию — **Server Component**.
+- `'use client'` только если нужны: hooks, события, browser API, store.
+- `'use client'` ставить **на самом нижнем** компоненте, где это нужно, а не на всей странице.
+
+## Запрещено
+
+- ❌ `src/pages/` для view-компонентов (конфликт с Next.js)
+- ❌ Монолитные файлы на 200+ строк с UI + логикой + стилями в одном месте
+- ❌ Дублирование helpers/hooks между страницами — поднять в `shared/`
+- ❌ Бизнес-логика в `shared/UI`
+- ❌ Стили вне `*.module.scss` (кроме `layout.module.scss` для reset)
+
+## Перед добавлением кода — чеклист
+
+1. Это атом UI → `shared/UI`
+2. Это крупный блок на 2+ страницах → `shared/widgets`
+3. Это секция одной страницы → `views/{page}/components/{Section}/`
+4. Логика → hook; вычисления → helper; shared state → store
+5. Компонент остаётся тонким после рефакторинга

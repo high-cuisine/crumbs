@@ -1,0 +1,30 @@
+@import '../../styles/variables';
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 17px;
+  height: 91px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: $color-gray-arrow;
+  cursor: pointer;
+  transition: color $transition-base, transform $transition-base;
+
+  &:hover {
+    color: $color-accent;
+    transform: scale(1.05);
+  }
+}
+
+.icon {
+  display: block;
+  width: 17px;
+  height: 91px;
+}
+
+.iconRight {
+  transform: scaleX(-1);
+}

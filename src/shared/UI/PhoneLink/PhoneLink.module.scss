@@ -1,0 +1,16 @@
+@import '../../styles/variables';
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: $font-alt;
+  font-size: 18px;
+  color: $color-text-muted;
+  text-decoration: none;
+  transition: color $transition-base;
+
+  &:hover {
+    color: $color-accent;
+  }
+}

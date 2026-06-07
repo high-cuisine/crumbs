@@ -1,0 +1,228 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.footer {
+  position: relative;
+  overflow: hidden;
+  min-height: 396px;
+  padding: 54px 0 78px;
+  background: $color-gray-footer;
+  color: $color-white;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+.decorLeft,
+.decorRight {
+  position: absolute;
+  display: block;
+  max-width: none;
+  height: auto;
+  pointer-events: none;
+}
+
+.decorLeft {
+  top: 81px;
+  left: clamp(24px, 6.25vw, 90px);
+  width: clamp(140px, 15.35vw, 221px);
+}
+
+.decorRight {
+  top: -8px;
+  right: clamp(24px, 5.8vw, 84px);
+  width: clamp(120px, 15.28vw, 220px);
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.title {
+  margin: 0 0 20px;
+  font-family: $font-body;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.219;
+  color: $color-white;
+}
+
+.phone {
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin: 0 0 13px;
+  font-family: $font-chicoree;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.366;
+  color: $color-white;
+  white-space: nowrap;
+  transition: opacity $transition-base;
+
+  &:hover {
+    opacity: 0.85;
+  }
+}
+
+.phoneIcon {
+  display: inline-block;
+  flex: 0 0 auto;
+  width: 26px;
+  height: 24px;
+}
+
+.phoneText {
+  display: inline-block;
+  color: $color-white;
+}
+
+.mail {
+  margin: 0 0 9px;
+  font-family: $font-chicoree;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.366;
+  color: $color-white;
+}
+
+.address {
+  margin: 0 0 45px;
+  font-family: $font-body;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.219;
+  color: $color-white;
+}
+
+.socials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+.socialIcon {
+  display: block;
+  flex: 0 0 auto;
+  width: auto;
+  height: auto;
+}
+
+.socialLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: 0;
+  transition: opacity $transition-base, transform $transition-base;
+
+  &:hover {
+    opacity: 0.85;
+    transform: translateY(-2px);
+  }
+}
+
+@include respond(tablet) {
+  .footer {
+    min-height: auto;
+    padding: 48px 0 56px;
+  }
+
+  .decorLeft {
+    top: 58px;
+    left: 12px;
+    width: 168px;
+  }
+
+  .decorRight {
+    top: -12px;
+    right: 10px;
+    width: 164px;
+  }
+
+  .title {
+    margin-bottom: 18px;
+    font-size: 26px;
+  }
+
+  .phone {
+    margin-bottom: 12px;
+    font-size: 28px;
+  }
+
+  .mail {
+    margin-bottom: 8px;
+    font-size: 28px;
+  }
+
+  .address {
+    margin-bottom: 34px;
+    font-size: 18px;
+  }
+
+  .socials {
+    gap: 26px;
+  }
+}
+
+@include respond(mobile) {
+  .footer {
+    min-height: auto;
+    padding: 42px 0 34px;
+  }
+
+  .decorLeft {
+    top: 52px;
+    left: -44px;
+    width: 120px;
+  }
+
+  .decorRight {
+    top: -14px;
+    right: -42px;
+    width: 108px;
+  }
+
+  .title {
+    margin-bottom: 14px;
+    font-size: 18px;
+  }
+
+  .phone {
+    margin-bottom: 10px;
+    font-size: 18px;
+    line-height: 1.3;
+  }
+
+  .phoneIcon {
+    width: 20px;
+    height: 18px;
+  }
+
+  .mail {
+    margin-bottom: 6px;
+    font-size: 18px;
+  }
+
+  .address {
+    margin-bottom: 22px;
+    font-size: 14px;
+  }
+
+  .socials {
+    gap: 20px;
+  }
+}

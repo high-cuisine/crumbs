@@ -1,0 +1,53 @@
+$color-white: #ffffff;
+$color-black: #000000;
+$color-text: #4c403a;
+$color-text-dark: #313131;
+$color-text-muted: #575757;
+$color-accent: #ae0f91;
+$color-button-text: #7b317c;
+$color-pink-light: #fbd3dd;
+$color-pink-soft: #f9cedc;
+$color-pink-card: #fbe4e4;
+$color-pink-section: #fde7e1;
+$color-pink-promo-start: #f9cedc;
+$color-pink-promo-end: #ebaebd;
+$color-gray-bar: #ededed;
+$color-gray-footer: #7c7c7c;
+$color-gray-card: #e2e2e2;
+$color-gray-placeholder: #d9d9d9;
+$color-gray-arrow: #949494;
+
+$gradient-button: linear-gradient(123deg, #7b317c 0%, #e059e2 100%);
+$gradient-promo: linear-gradient(92deg, #f9cedc 12%, #ebaebd 68%);
+$gradient-logo: linear-gradient(180deg, #7b317c 1%, #ff6dc5 82%);
+
+$font-display: var(--font-fredoka), 'Fredoka', sans-serif;
+$font-chicoree: var(--font-chicoree-em), 'Chicoree Em.', sans-serif;
+$font-body: var(--font-montserrat), 'Montserrat', sans-serif;
+$font-alt: var(--font-montserrat-alt), 'Montserrat Alternates', sans-serif;
+
+$container-max: 1440px;
+$container-padding: 24px;
+$color-pink-header: #ffefef;
+$color-purple-menu: #9c529a;
+
+$container-padding-mobile: 28px;
+$header-height: 96px;
+$header-height-mobile: 84px;
+$radius-product-mobile: 62px;
+
+$radius-pill: 188px;
+$radius-card: 17px;
+$radius-box: 12px;
+$radius-product: 83px;
+
+$shadow-button:
+  0 3.274px 3.274px rgba(0, 0, 0, 0.25),
+  inset 1.637px 1.637px 3.274px rgba(0, 0, 0, 0.25);
+
+$transition-base: 0.2s ease;
+
+$section-gap-desktop: 72px;
+$section-gap-desktop-end: 96px;
+$section-gap-tablet: 40px;
+$section-gap-mobile: 36px;

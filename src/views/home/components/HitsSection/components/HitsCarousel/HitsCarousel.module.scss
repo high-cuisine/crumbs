@@ -1,0 +1,40 @@
+@import '../../../../../../shared/styles/variables';
+@import '../../../../../../shared/styles/mixins';
+
+.carousel {
+  position: relative;
+  display: none;
+}
+
+.track {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 0 8px 8px;
+  @include hide-scrollbar;
+}
+
+.arrowLeft,
+.arrowRight {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  transform: translateY(-50%);
+  height: auto;
+  padding: 8px 0;
+}
+
+.arrowLeft {
+  left: -4px;
+}
+
+.arrowRight {
+  right: -4px;
+}
+
+@include respond(mobile) {
+  .carousel {
+    display: none;
+  }
+}

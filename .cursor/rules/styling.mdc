@@ -1,0 +1,35 @@
+---
+alwaysApply: true
+description: SCSS module styling rules for mini-site
+globs:
+  - mini-site/**/*.scss
+  - mini-site/**/*.tsx
+---
+
+# mini-site — стили (module.scss)
+
+## Обязательно
+
+- Один компонент = один `ComponentName.module.scss`.
+- Имена классов — camelCase в SCSS, использование через `styles.className`.
+- Общие токены: `shared/styles/_variables.scss`, `shared/styles/_mixins.scss`.
+
+## SCSS imports
+
+```scss
+@use '../../styles/variables' as *;  // из shared/UI или shared/widgets
+@use '../../styles/mixins' as *;
+
+@use '../../../../shared/styles/variables' as *;  // из views/.../components/Section/
+```
+
+## Responsive
+
+- Breakpoints через `@include respond(tablet)` / `@include respond(mobile)` из `_mixins.scss`.
+- Не хардкодить media queries в каждом файле без необходимости.
+
+## Запрещено
+
+- ❌ Глобальные CSS-файлы для компонентов
+- ❌ `:global()` без крайней необходимости
+- ❌ Magic numbers для цветов — использовать переменные из `_variables.scss`

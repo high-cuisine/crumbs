@@ -1,0 +1,192 @@
+@import '../../../../shared/styles/variables';
+@import '../../../../shared/styles/mixins';
+
+$hero-desktop-max-width: 1440px;
+
+.hero {
+  position: relative;
+}
+
+.stage {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  max-width: $hero-desktop-max-width;
+  margin-inline: auto;
+  // фиксируем высоту баннера и отступ под нижний декор на desktop
+  --hero-blob-height: 602px;
+  height: 682px;
+  min-height: 682px;
+  max-height: 682px;
+  padding-bottom: 0;
+}
+
+@media (min-width: 1440px) {
+  .stage {
+    width: $hero-desktop-max-width;
+    min-width: $hero-desktop-max-width;
+    max-width: $hero-desktop-max-width;
+    height: 682px;
+    min-height: 682px;
+    max-height: 682px;
+  }
+}
+
+.stageClip {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 100vw;
+  height: 100%;
+  transform: translateX(-50%);
+}
+
+.inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 132px;
+}
+
+.action {
+  width: 234.91px;
+  margin-top: 45.72px;
+  margin-left: -11px;
+
+  a,
+  button {
+    width: 100%;
+    min-height: 60.57px;
+    padding: 16.28px 31px;
+    border-radius: 153.88px;
+    font-family: $font-body;
+    font-size: 21.28px;
+    font-weight: 700;
+    line-height: 1.219;
+    box-shadow:
+      0 3.274px 3.274px rgba(0, 0, 0, 0.25),
+      inset 1.637px 1.637px 3.274px rgba(0, 0, 0, 0.25);
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1024px) {
+  .hero {
+    background: $color-white;
+  }
+
+  .stage {
+    --hero-blob-height: 531px;
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+    height: 820px;
+    max-height: 820px;
+    min-height: 820px;
+    padding-bottom: 40px;
+  }
+
+  .inner {
+    align-items: center;
+    padding-top: 80px;
+    padding-bottom: 340px;
+    text-align: center;
+  }
+
+  .action {
+    width: 280px;
+    margin-top: 24px;
+    margin-left: 0;
+
+    a,
+    button {
+      min-height: 56px;
+      padding: 16px 32px;
+      border-radius: $radius-pill;
+      font-size: 18px;
+      line-height: 1.22;
+      box-shadow: $shadow-button;
+    }
+  }
+}
+
+@media (min-width: 769px) and (max-width: 900px) {
+  .hero {
+    background: $color-white;
+  }
+
+  .stage {
+    --hero-blob-height: 500px;
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+    height: auto;
+    max-height: none;
+    min-height: 740px;
+    padding-bottom: 32px;
+  }
+
+  .inner {
+    align-items: center;
+    padding-top: 72px;
+    padding-bottom: 320px;
+    text-align: center;
+  }
+
+  .action {
+    width: 270px;
+    margin-top: 20px;
+    margin-left: 0;
+
+    a,
+    button {
+      min-height: 54px;
+      padding: 14px 30px;
+      border-radius: $radius-pill;
+      font-size: 17px;
+      line-height: 1.22;
+      box-shadow: $shadow-button;
+    }
+  }
+}
+
+@include respond(mobile) {
+  .hero {
+    background: $color-white;
+  }
+
+  .stage {
+    --hero-blob-height: clamp(420px, 132vw, 531px);
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+    height: auto;
+    max-height: none;
+    min-height: clamp(620px, 168vw, 760px);
+    padding-bottom: clamp(20px, 5vw, 40px);
+  }
+
+  .inner {
+    align-items: center;
+    padding-top: 80px;
+    padding-bottom: clamp(260px, 68vw, 320px);
+    text-align: center;
+  }
+
+  .action {
+    width: clamp(235px, 62vw, 280px);
+    margin-top: clamp(16px, 4.5vw, 24px);
+    margin-left: 0;
+
+    a,
+    button {
+      min-height: clamp(48px, 12vw, 56px);
+      padding: clamp(12px, 3vw, 16px) clamp(24px, 6vw, 32px);
+      border-radius: $radius-pill;
+      font-size: clamp(16px, 4.2vw, 18px);
+      line-height: 1.22;
+      box-shadow: $shadow-button;
+    }
+  }
+}

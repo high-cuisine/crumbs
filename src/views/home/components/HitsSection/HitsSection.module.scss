@@ -1,0 +1,78 @@
+@import '../../../../shared/styles/variables';
+@import '../../../../shared/styles/mixins';
+
+.section {
+  position: relative;
+  padding: $section-gap-desktop 0;
+  overflow: hidden;
+
+  .action {
+    display: flex;
+    justify-content: center;
+    width: 258px;
+    max-width: 100%;
+    margin: 54px auto 0;
+
+    a,
+    button {
+      width: 100%;
+      min-height: 60.57px;
+      padding: 16.28px 31px;
+      border-radius: 153.88px;
+      font-family: $font-body;
+      font-size: 21.28px;
+      font-weight: 700;
+      line-height: 1.219;
+      text-align: center;
+      white-space: nowrap;
+      box-shadow: $shadow-button;
+    }
+  }
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+}
+
+.title {
+  margin: 0 0 72px;
+  font-family: $font-chicoree;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 1.37;
+  text-transform: uppercase;
+  color: $color-text;
+  text-align: center;
+}
+
+@include respond(tablet) {
+  .section {
+    padding: $section-gap-tablet 0;
+  }
+}
+
+@include respond(mobile) {
+  .section {
+    padding: $section-gap-mobile 0;
+  }
+
+  .title {
+    margin-bottom: 18px;
+    font-size: 26px;
+  }
+
+  .action {
+    display: flex;
+    width: min(100%, 220px);
+    margin-top: 20px;
+
+    a,
+    button {
+      min-height: 52px;
+      padding: 12px 22px;
+      font-size: 17px;
+      border-radius: 100px;
+    }
+  }
+}

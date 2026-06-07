@@ -1,0 +1,22 @@
+@import '../../../../../../shared/styles/mixins';
+
+.imageWrap {
+  position: relative;
+  width: min(100%, 335px);
+  aspect-ratio: 335 / 344;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.image {
+  object-fit: cover;
+}
+
+@include respond(mobile) {
+  .imageWrap {
+    width: 100%;
+    max-width: 360px;
+    aspect-ratio: 402 / 344;
+    border-radius: 12px;
+  }
+}

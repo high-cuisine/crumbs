@@ -1,0 +1,1 @@
+export { HitsCarousel } from './HitsCarousel';

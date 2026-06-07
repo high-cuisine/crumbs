@@ -1,0 +1,71 @@
+@import 'variables';
+
+@mixin container {
+  width: 100%;
+  max-width: $container-max;
+  margin: 0 auto;
+  padding: 0 clamp(1.6875rem, -1.5475rem + 13.8028vw, 10.875rem);
+
+  @include respond(mobile) {
+    padding: 0 $container-padding-mobile;
+  }
+}
+
+@mixin section-title {
+  font-family: $font-display;
+  font-weight: 700;
+  font-size: clamp(28px, 4vw, 44px);
+  line-height: 1;
+  color: $color-text;
+  text-transform: uppercase;
+}
+
+@mixin body-text {
+  font-family: $font-body;
+  font-weight: 400;
+  font-size: clamp(16px, 2vw, 20px);
+  line-height: 1.5;
+  color: $color-text;
+}
+
+@mixin pill-button-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: $radius-pill;
+  cursor: pointer;
+  font-family: $font-body;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform $transition-base, opacity $transition-base;
+
+  &:hover {
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+@mixin hide-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@mixin respond($breakpoint) {
+  @if $breakpoint == tablet {
+    @media (max-width: 1024px) {
+      @content;
+    }
+  } @else if $breakpoint == mobile {
+    @media (max-width: 768px) {
+      @content;
+    }
+  }
+}

@@ -1,0 +1,1 @@
+export { WhyGallery } from './WhyGallery';

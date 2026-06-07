@@ -1,0 +1,46 @@
+@import '../../../../../../shared/styles/variables';
+@import '../../../../../../shared/styles/mixins';
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 401px;
+  text-align: left;
+}
+
+.title {
+  font-family: $font-chicoree;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.37;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  color: $color-text;
+}
+
+.paragraph {
+  font-family: $font-body;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: $color-text;
+}
+
+@include respond(mobile) {
+  .text {
+    max-width: 100%;
+    align-items: flex-start;
+    text-align: left;
+    gap: 12px;
+  }
+
+  .title {
+    font-size: 25px;
+  }
+
+  .paragraph {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+}

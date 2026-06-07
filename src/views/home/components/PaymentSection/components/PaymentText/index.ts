@@ -1,0 +1,1 @@
+export { PaymentText } from './PaymentText';

@@ -1,0 +1,93 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.heading {
+  margin: 0;
+  font-family: $font-display;
+  font-weight: 700;
+}
+
+.display {
+  font-size: clamp(32px, 5vw, 44px);
+  line-height: 1;
+}
+
+.section {
+  font-size: clamp(28px, 4vw, 30px);
+  line-height: 1.37;
+  text-transform: uppercase;
+}
+
+.subsection {
+  font-size: clamp(22px, 3vw, 25px);
+  line-height: 1.37;
+}
+
+.text {
+  margin: 0;
+}
+
+.body {
+  font-family: $font-body;
+  font-size: clamp(16px, 2vw, 20px);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.bodyAlt {
+  font-family: $font-alt;
+  font-size: clamp(16px, 2vw, 19px);
+  font-weight: 400;
+  line-height: 1.16;
+}
+
+.caption {
+  font-family: $font-body;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.nav {
+  font-family: $font-body;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.22;
+}
+
+.color-default {
+  color: $color-text;
+}
+
+.color-dark {
+  color: $color-text-dark;
+}
+
+.color-white {
+  color: $color-white;
+}
+
+.color-accent {
+  color: $color-accent;
+}
+
+.color-muted {
+  color: $color-text-muted;
+}
+
+@include respond(mobile) {
+  .display {
+    font-size: 29px;
+    line-height: 1.1;
+  }
+
+  .section {
+    font-size: 25px;
+  }
+
+  .body,
+  .bodyAlt {
+    font-size: 16px;
+    line-height: 1.37;
+  }
+}

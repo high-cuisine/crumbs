@@ -1,0 +1,102 @@
+@import '../../../../shared/styles/variables';
+@import '../../../../shared/styles/mixins';
+
+.section {
+  background: $gradient-promo;
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: clamp(280px, 31.7vw, 457px) minmax(0, 1fr);
+  gap: clamp(24px, 10.4vw, 150px);
+  align-items: stretch;
+  min-height: 507px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding-top: 33px;
+  padding-bottom: 74px;
+}
+
+.button {
+  width: 287px;
+  max-width: 100%;
+  margin-top: 30px;
+
+  a,
+  button {
+    width: 100%;
+    min-height: 74px;
+    font-size: 26px;
+    line-height: 1.219;
+  }
+}
+
+@include respond(tablet) {
+  .inner {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    padding-top: 36px;
+    padding-bottom: 40px;
+    gap: 22px;
+  }
+
+  .content {
+    align-items: center;
+    padding: 0;
+  }
+
+  .button {
+    width: min(100%, 260px);
+    margin-top: 18px;
+
+    a,
+    button {
+      min-height: 58px;
+      font-size: 22px;
+    }
+  }
+}
+
+@include respond(mobile) {
+  .section {
+    padding: 0;
+  }
+
+  .inner {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: stretch;
+    min-height: auto;
+    padding: 0;
+    padding-inline: 0;
+    margin-inline: calc(-1 * $container-padding-mobile);
+    max-width: calc(100% + #{$container-padding-mobile * 2});
+    gap: 0;
+  }
+
+  .content {
+    align-items: flex-end;
+    justify-content: flex-start;
+    gap: 0;
+    padding: 20px 18px 22px 14px;
+  }
+
+  .button {
+    width: min(100%, 180px);
+    margin-top: 14px;
+
+    a,
+    button {
+      min-height: 50px;
+      padding: 12px 20px;
+      font-size: 20px;
+      line-height: 1.22;
+    }
+  }
+}

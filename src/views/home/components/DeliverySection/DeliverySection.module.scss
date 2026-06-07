@@ -1,0 +1,160 @@
+@import '../../../../shared/styles/variables';
+@import '../../../../shared/styles/mixins';
+
+.section {
+  position: relative;
+  padding: $section-gap-desktop 0 0;
+  background: $color-pink-section;
+  overflow: hidden;
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 401px) minmax(0, 560px);
+  justify-content: space-between;
+  gap: 32px;
+  align-items: center;
+  min-height: 537px;
+  width: 100%;
+  box-sizing: border-box;
+  padding-bottom: $section-gap-desktop;
+}
+
+.path,
+.star {
+  position: absolute;
+  height: auto;
+  pointer-events: none;
+}
+
+.path {
+  left: 50%;
+  bottom: -26px;
+  z-index: 0;
+  width: clamp(1200px, 103vw, 1481px);
+  transform: translateX(-50%);
+}
+
+.star {
+  top: 88px;
+  left: min(46.2vw, 653px);
+  z-index: 0;
+  width: 118px;
+}
+
+.illustration {
+  order: 2;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.content {
+  order: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-top: 0;
+}
+
+.action {
+  width: 258px;
+  max-width: 100%;
+
+  a,
+  button {
+    width: 100%;
+    min-height: 61px;
+    padding: 16.28px 31px;
+    border-radius: 153.88px;
+    font-family: $font-body;
+    font-size: 21.28px;
+    font-weight: 700;
+    line-height: 1.219;
+    box-shadow: $shadow-button;
+  }
+}
+
+@include respond(tablet) {
+  .section {
+    padding-top: $section-gap-tablet;
+  }
+
+  .inner {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    padding-bottom: $section-gap-tablet;
+  }
+
+  .content {
+    order: 1;
+    padding-top: 0;
+    gap: 24px;
+  }
+
+  .illustration {
+    order: 2;
+  }
+
+  .star {
+    display: none;
+  }
+}
+
+@include respond(mobile) {
+  .section {
+    padding-top: $section-gap-mobile;
+  }
+
+  .inner {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    align-items: start;
+    min-height: auto;
+    padding-bottom: $section-gap-mobile;
+  }
+
+  .content {
+    order: 1;
+    align-items: flex-start;
+    text-align: left;
+    padding: 0;
+    gap: 14px;
+  }
+
+  .illustration {
+    order: 2;
+    width: 100%;
+    margin-top: 0;
+    justify-content: center;
+  }
+
+  .action {
+    width: min(100%, 220px);
+
+    a,
+    button {
+      min-height: 52px;
+      padding: 12px 22px;
+      font-family: $font-body;
+      font-size: 17px;
+      font-weight: 700;
+      line-height: 1.219;
+      border-radius: 100px;
+    }
+  }
+
+  .path {
+    width: 110%;
+    left: 50%;
+    bottom: -22px;
+    transform: translateX(-50%);
+    opacity: 0.85;
+  }
+
+  .star {
+    display: none;
+  }
+}

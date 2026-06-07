@@ -1,0 +1,1 @@
+export { PromoMedia } from './PromoMedia';

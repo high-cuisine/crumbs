@@ -1,0 +1,45 @@
+@import '../../../../../../shared/styles/mixins';
+
+.decorations {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hook,
+.squiggleLeft,
+.squiggleRight {
+  position: absolute;
+  height: auto;
+}
+
+.hook {
+  top: 0;
+  left: 0;
+  width: clamp(72px, 8.8vw, 123px);
+}
+
+.squiggleLeft {
+  bottom: 0;
+  left: 4.4%;
+  width: clamp(40px, 5.2vw, 73px);
+}
+
+.squiggleRight {
+  top: 55.5%;
+  right: 0;
+  width: clamp(48px, 6.1vw, 85px);
+}
+
+@include respond(mobile) {
+  .decorations {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .decorations {
+    display: none;
+  }
+}
