@@ -1,17 +1,24 @@
+'use client';
+
 import Image from 'next/image';
-import { PROMO_ASSETS } from '../../helpers/promoAssets';
+import { classNames } from '@/shared/helpers/classNames';
+import { useInView } from '@/shared/hooks';
 import styles from './PromoDecorations.module.scss';
 
-export function PromoDecorations() {
+type PromoDecorationsProps = {
+  ring: string;
+};
+
+export function PromoDecorations({ ring }: PromoDecorationsProps) {
+  const { ref, inView } = useInView<HTMLDivElement>();
+
   return (
-    <div className={styles.decorations} aria-hidden="true">
-      <Image
-        src={PROMO_ASSETS.decorRing}
-        alt=""
-        width={132}
-        height={132}
-        className={styles.ring}
-      />
+    <div
+      ref={ref}
+      className={classNames(styles.decorations, inView && styles.in)}
+      aria-hidden="true"
+    >
+      <Image src={ring} alt="" width={132} height={132} className={styles.ring} />
     </div>
   );
 }

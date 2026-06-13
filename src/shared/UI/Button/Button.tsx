@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { classNames } from '@/shared/helpers/classNames';
 import styles from './Button.module.scss';
 
@@ -13,6 +14,10 @@ type ButtonProps = {
   type?: 'button' | 'submit';
   onClick?: () => void;
 };
+
+function isInternalHref(href: string): boolean {
+  return href.startsWith('/') || href.startsWith('#');
+}
 
 export function Button({
   children,
@@ -31,6 +36,14 @@ export function Button({
   );
 
   if (href) {
+    if (isInternalHref(href)) {
+      return (
+        <Link href={href} className={classes}>
+          {children}
+        </Link>
+      );
+    }
+
     return (
       <a href={href} className={classes}>
         {children}

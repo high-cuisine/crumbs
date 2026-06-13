@@ -1,0 +1,1 @@
+export { HitsPage } from './HitsPage';

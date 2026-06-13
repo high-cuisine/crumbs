@@ -1,21 +1,27 @@
+'use client';
+
+import { classNames } from '@/shared/helpers/classNames';
+import { useInView } from '@/shared/hooks';
 import styles from './PromoText.module.scss';
 
-const DESCRIPTION = `Соберите сочетание,
-которое хочется попробовать именно сейчас.
-Нажмите на карточку, чтобы увидеть начинку, состав, кбжу и детали вкуса.
+type PromoTextProps = {
+  title: string;
+  subtitle: string;
+  description: string;
+};
 
-Каждый вкус — с характером и своей текстурой.`;
+export function PromoText({ title, subtitle, description }: PromoTextProps) {
+  const { ref, inView } = useInView<HTMLDivElement>();
 
-export function PromoText() {
   return (
-    <div className={styles.text}>
+    <div ref={ref} className={classNames(styles.text, inView && styles.in)}>
       <h2 id="promo-title" className={styles.title}>
-        Повод для десерта
+        {title}
       </h2>
       <p className={styles.body}>
-        <strong className={styles.subtitle}>Выберите вкусы</strong>
+        <strong className={styles.subtitle}>{subtitle}</strong>
         {'\n'}
-        {DESCRIPTION}
+        {description}
       </p>
     </div>
   );

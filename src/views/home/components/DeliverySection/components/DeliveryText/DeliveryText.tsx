@@ -1,20 +1,25 @@
+'use client';
+
 import { Heading, Text } from '@/shared/UI/Typography';
+import { classNames } from '@/shared/helpers/classNames';
+import { useInView } from '@/shared/hooks';
 import styles from './DeliveryText.module.scss';
 
-const PARAGRAPHS = [
-  'Доставка осуществляется курьером в удобный для вас интервал времени.',
-  'Стоимость доставки рассчитывается индивидуально в зависимости от адреса.',
-  'Возможна доставка в день заказа при наличии свободных слотов.',
-];
+type DeliveryTextProps = {
+  title: string;
+  paragraphs: string[];
+};
 
-export function DeliveryText() {
+export function DeliveryText({ title, paragraphs }: DeliveryTextProps) {
+  const { ref, inView } = useInView<HTMLDivElement>();
+
   return (
-    <div className={styles.text}>
+    <div ref={ref} className={classNames(styles.text, inView && styles.in)}>
       <Heading as="h2" id="delivery-title" variant="section" className={styles.title}>
-        ДОСТАВКА
+        {title}
       </Heading>
-      {PARAGRAPHS.map((paragraph) => (
-        <Text as="p" key={paragraph} variant="caption" className={styles.paragraph}>
+      {paragraphs.map((paragraph, index) => (
+        <Text as="p" key={index} variant="caption" className={styles.paragraph}>
           {paragraph}
         </Text>
       ))}

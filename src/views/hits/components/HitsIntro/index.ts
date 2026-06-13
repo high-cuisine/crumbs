@@ -1,0 +1,1 @@
+export { HitsIntro } from './HitsIntro';

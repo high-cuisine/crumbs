@@ -1,0 +1,166 @@
+.editor {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 0;
+  padding: 16px;
+  border: 1px solid #e4e4e7;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.rootGroup {
+  border: none;
+  padding: 0;
+  gap: 20px;
+  background: transparent;
+}
+
+.legend {
+  padding: 0 6px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #3f3f46;
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.checkboxRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #52525b;
+}
+
+.input,
+.textarea {
+  width: 100%;
+  padding: 9px 12px;
+  font-size: 14px;
+  font-family: inherit;
+  border: 1px solid #d4d4d8;
+  border-radius: 8px;
+  outline: none;
+  background: #fff;
+
+  &:focus {
+    border-color: #7c3aed;
+    box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.12);
+  }
+}
+
+.textarea {
+  resize: vertical;
+  line-height: 1.5;
+}
+
+.arrayItem {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px;
+  border: 1px dashed #d4d4d8;
+  border-radius: 10px;
+  background: #fafafa;
+}
+
+.arrayItemHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.arrayIndex {
+  font-size: 12px;
+  font-weight: 700;
+  color: #a1a1aa;
+}
+
+.add {
+  align-self: flex-start;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #7c3aed;
+  background: #f3effd;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+
+  &:hover {
+    background: #e9e0fb;
+  }
+}
+
+.remove {
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #dc2626;
+  background: #fef2f2;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+
+  &:hover {
+    background: #fee2e2;
+  }
+}
+
+.bar {
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 0;
+  background: linear-gradient(to top, #f4f4f5 70%, rgba(244, 244, 245, 0));
+}
+
+.save {
+  padding: 11px 24px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  background: #7c3aed;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+
+  &:hover {
+    background: #6d28d9;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: default;
+  }
+}
+
+.status {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.ok {
+  color: #16a34a;
+}
+
+.fail {
+  color: #dc2626;
+}

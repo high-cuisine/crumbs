@@ -29,6 +29,12 @@
   pointer-events: none;
 }
 
+// Грузовики — декоративные элементы только для мобайла; на десктопе скрыты
+.truckLeft,
+.truckRight {
+  display: none !important;
+}
+
 .path {
   left: 50%;
   bottom: -26px;
@@ -42,6 +48,63 @@
   left: min(46.2vw, 653px);
   z-index: 0;
   width: 118px;
+}
+
+// === Анимации появления ===
+// Дорога мягко проявляется (transform: translateX(-50%) для центрирования не трогаем)
+.path {
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+// Звезда выезжает справа
+.star {
+  opacity: 0;
+  translate: 64px 0;
+  transition:
+    opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    translate 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+// Грузовики (мобайл) выезжают с боков
+.truckLeft {
+  opacity: 0;
+  translate: -90px 0;
+  transition:
+    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.1s,
+    translate 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.1s;
+}
+
+.truckRight {
+  opacity: 0;
+  translate: 90px 0;
+  transition:
+    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.2s,
+    translate 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.2s;
+}
+
+.in {
+  .path {
+    opacity: 1;
+  }
+
+  .star,
+  .truckLeft,
+  .truckRight {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .path,
+  .star,
+  .truckLeft,
+  .truckRight {
+    opacity: 1;
+    translate: 0 0;
+    transition: none;
+  }
 }
 
 .illustration {
@@ -65,6 +128,7 @@
 
   a,
   button {
+    text-wrap: nowrap;
     width: 100%;
     min-height: 61px;
     padding: 16.28px 31px;
@@ -106,6 +170,7 @@
 @include respond(mobile) {
   .section {
     padding-top: $section-gap-mobile;
+    min-height: 480px;
   }
 
   .inner {
@@ -113,30 +178,47 @@
     gap: 18px;
     align-items: start;
     min-height: auto;
-    padding-bottom: $section-gap-mobile;
+    padding-bottom: 200px;
   }
 
   .content {
     order: 1;
-    align-items: flex-start;
+    align-items: center;
     text-align: left;
     padding: 0;
-    gap: 14px;
+    gap: 35px;
   }
 
   .illustration {
-    order: 2;
-    width: 100%;
-    margin-top: 0;
-    justify-content: center;
+    display: none;
+  }
+
+  .truckLeft {
+    display: block !important;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .truckRight {
+    display: block !important;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 0;
   }
 
   .action {
-    width: min(100%, 220px);
+    width: 258px;
+    max-width: 100%;
 
     a,
     button {
-      min-height: 52px;
+      width: 100%;
+      min-height: 58px;
       padding: 12px 22px;
       font-family: $font-body;
       font-size: 17px;
@@ -151,10 +233,15 @@
     left: 50%;
     bottom: -22px;
     transform: translateX(-50%);
-    opacity: 0.85;
   }
 
   .star {
     display: none;
+  }
+}
+
+@include respond(mobile) {
+  .in .path {
+    opacity: 0.85;
   }
 }

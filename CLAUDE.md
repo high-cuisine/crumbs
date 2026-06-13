@@ -118,3 +118,35 @@ src/shared/UI/NewAtom/
 ## Skill
 
 При работе с архитектурой подключай skill: `skills/mini-site-architecture/SKILL.md`
+
+## CMS / Админка (управление контентом)
+
+Весь видимый контент витрины редактируется в `/admin` (без правок кода).
+
+### Слой `src/server/` (server-only)
+
+| Путь | Что |
+|------|-----|
+| `src/server/store/` | Хранилище: `better-sqlite3` (основной) + JSON-файл (авто-фолбэк, если нативный модуль не загрузился). Выбор в `getStore()`. |
+| `src/server/content/schema.ts` | zod-схемы контента по ключам страниц: `common, home, hits, boxes, delivery, cart`. Типы (`HomeContent`, `CommonContent`…) — отсюда. |
+| `src/server/content/defaults.ts` | Дефолтный контент = текущий сайт. Возвращается, если в БД пусто. |
+| `src/server/content/repository.ts` | `getPageContent(key)` / `savePageContent(key, data)` (zod-валидация). |
+| `src/server/auth/session.ts` | HMAC-cookie (WebCrypto) + `verifyPassword`. |
+| `src/server/media/storage.ts` | Загрузка файлов в `UPLOADS_DIR`. |
+
+`src/proxy.ts` (НЕ middleware.ts — Next 16) гейтит `/admin` и `/api/admin`.
+
+### Правила
+
+1. **Контент течёт пропсами сверху вниз.** Page-компонент (`views/**/*Page.tsx`,
+   server) вызывает `getPageContent(...)` и раздаёт срезы в секции/листья (включая
+   клиентские). НЕ читать контент из листьев и НЕ хардкодить тексты/картинки в JSX.
+2. Импорт типов контента в клиентские компоненты — только `import type` из
+   `@/server/content/schema`.
+3. Публичные контент-страницы — `export const dynamic = 'force-dynamic'`.
+4. Новое редактируемое поле: добавь в `schema.ts` + `defaults.ts` + прокинь пропсом.
+   Админка (`src/views/admin/components/ContentEditor`) рендерит форму автоматически
+   по структуре данных (строка/число/массив/объект; картинки — по расширению/имени ключа).
+5. Next 16: `cookies()` async, `params`/`searchParams` — Promise, route handlers на Node-runtime.
+
+Подробности запуска и Docker — в [README.md](./README.md).

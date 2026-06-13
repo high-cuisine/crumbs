@@ -24,6 +24,10 @@
 .DS_Store
 *.pem
 
+# CMS: данные (SQLite/JSON) и загруженные изображения — монтируются как volume в Docker
+/data
+/public/uploads
+
 # debug
 npm-debug.log*
 yarn-debug.log*

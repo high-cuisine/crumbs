@@ -1,24 +1,26 @@
+'use client';
+
 import Image from 'next/image';
-import { HITS_ASSETS } from '@/views/home/helpers/hitsAssets';
+import { classNames } from '@/shared/helpers/classNames';
+import { useInView } from '@/shared/hooks';
 import styles from './HitsDecorations.module.scss';
 
-export function HitsDecorations() {
+type HitsDecorationsProps = {
+  blobLeft: string;
+  blobRight: string;
+};
+
+export function HitsDecorations({ blobLeft, blobRight }: HitsDecorationsProps) {
+  const { ref, inView } = useInView<HTMLDivElement>();
+
   return (
-    <div className={styles.decorations} aria-hidden="true">
-      <Image
-        src={HITS_ASSETS.decorBlobLeft}
-        alt=""
-        width={280}
-        height={275}
-        className={styles.blobLeft}
-      />
-      <Image
-        src={HITS_ASSETS.decorBlobRight}
-        alt=""
-        width={166}
-        height={164}
-        className={styles.blobRight}
-      />
+    <div
+      ref={ref}
+      className={classNames(styles.decorations, inView && styles.in)}
+      aria-hidden="true"
+    >
+      <Image src={blobLeft} alt="" width={280} height={275} className={styles.blobLeft} />
+      <Image src={blobRight} alt="" width={166} height={164} className={styles.blobRight} />
     </div>
   );
 }

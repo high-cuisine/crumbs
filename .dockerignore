@@ -1,0 +1,14 @@
+node_modules
+.next
+.git
+data
+public/uploads
+npm-debug.log*
+.DS_Store
+*.tsbuildinfo
+.env*
+Dockerfile
+docker-compose.yml
+.dockerignore
+.figma-*
+.claude

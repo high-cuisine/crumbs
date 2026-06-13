@@ -1,0 +1,77 @@
+@import '../../../../shared/styles/variables';
+@import '../../../../shared/styles/mixins';
+
+.section {
+  padding-bottom: 120px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 40px 32px;
+  max-width: 1018px;
+  margin: 0 auto;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-top: 48px;
+}
+
+.progress {
+  margin: 0;
+  font-family: $font-alt;
+  font-size: 18px;
+  color: $color-black;
+}
+
+.cart {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 48px;
+  border: 3px solid $color-accent;
+  border-radius: $radius-pill;
+  background: transparent;
+  font-family: $font-alt;
+  font-weight: 700;
+  font-size: 22px;
+  color: #353535;
+  cursor: pointer;
+  transition: background $transition-base, color $transition-base, opacity $transition-base;
+
+  &:hover:not(:disabled) {
+    background: $color-accent;
+    color: $color-white;
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+}
+
+@include respond(tablet) {
+  .section {
+    padding-bottom: 80px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 680px;
+    gap: 28px 24px;
+  }
+}
+
+@include respond(mobile) {
+  .section {
+    padding-bottom: 56px;
+  }
+
+  .grid {
+    gap: 16px;
+  }
+}

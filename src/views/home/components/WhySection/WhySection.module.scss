@@ -13,7 +13,8 @@
   gap: clamp(24px, 2.4vw, 34px);
   align-items: start;
   min-height: 515px;
-  padding-top: 82px;
+  padding-top: clamp(1.875rem, 1.1708rem + 3.0047vw, 3.875rem);
+  padding-bottom: clamp(1.5625rem, 1.0123rem + 2.3474vw, 3.125rem);
 }
 
 @include respond(tablet) {

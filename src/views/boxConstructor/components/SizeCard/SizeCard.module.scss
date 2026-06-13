@@ -1,0 +1,60 @@
+@import '../../../../shared/styles/variables';
+@import '../../../../shared/styles/mixins';
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 0;
+}
+
+.media {
+  width: 100%;
+  border-radius: 9px;
+  background: #e2e2e2;
+  overflow: hidden;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.name {
+  margin: 34px 0 0;
+  font-family: $font-alt;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 1.2;
+  color: $color-black;
+  text-align: center;
+}
+
+.action {
+  min-width: 174px;
+  margin-top: 34px;
+}
+
+@include respond(tablet) {
+  .name {
+    margin-top: 24px;
+    font-size: 22px;
+  }
+
+  .action {
+    margin-top: 24px;
+  }
+}
+
+@include respond(mobile) {
+  .name {
+    margin-top: 16px;
+    font-size: 18px;
+  }
+
+  .action {
+    min-width: 0;
+    margin-top: 16px;
+  }
+}

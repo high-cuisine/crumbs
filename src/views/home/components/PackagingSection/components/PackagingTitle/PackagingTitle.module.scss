@@ -3,6 +3,7 @@
 .title {
   color: rgba(0, 0, 0, 0.43);
   text-align: center;
+  font-family: var(--font-chicoree-em),"Chicoree Em.",sans-serif;
 }
 
 @include respond(mobile) {
@@ -10,5 +11,6 @@
     font-size: 18px;
     line-height: 1.37;
     padding: 0 12px;
+    
   }
 }

@@ -1,0 +1,131 @@
+@import '../../../../shared/styles/variables';
+@import '../../../../shared/styles/mixins';
+
+.intro {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+  padding-top: 140px;
+  padding-bottom: 96px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 0 1 468px;
+}
+
+.title {
+  margin: 0;
+  font-family: $font-body;
+  font-weight: 700;
+  font-size: 38px;
+  line-height: 1.2;
+  color: $color-black;
+}
+
+.cart {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 60px 0 33px;
+  padding: 24px 48px;
+  border: 3px solid $color-accent;
+  border-radius: $radius-pill;
+  font-family: $font-alt;
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1.2;
+  color: #353535;
+  text-decoration: none;
+  transition: background $transition-base, color $transition-base;
+
+  &:hover {
+    background: $color-accent;
+    color: $color-white;
+  }
+}
+
+.note {
+  max-width: 468px;
+  margin: 0;
+  font-family: $font-alt;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.2;
+  color: $color-black;
+}
+
+.mockup {
+  flex: 0 0 526px;
+  max-width: 526px;
+  background: #e5e5e5;
+  overflow: hidden;
+}
+
+.mockupImage {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@include respond(tablet) {
+  .intro {
+    padding-top: 96px;
+    padding-bottom: 64px;
+    gap: 32px;
+  }
+
+  .mockup {
+    flex: 0 1 440px;
+  }
+
+  .cart {
+    margin: 40px 0 24px;
+    padding: 20px 40px;
+    font-size: 22px;
+  }
+}
+
+@include respond(mobile) {
+  .intro {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 28px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  .info {
+    flex: 1 1 auto;
+    align-items: center;
+    text-align: center;
+    order: 2;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+
+  .cart {
+    width: 100%;
+    max-width: 360px;
+    margin: 28px 0 18px;
+    padding: 16px 32px;
+    border-width: 2px;
+    font-size: 20px;
+  }
+
+  .note {
+    max-width: 100%;
+    font-size: 16px;
+  }
+
+  .mockup {
+    flex: 1 1 auto;
+    max-width: none;
+    order: 1;
+  }
+}

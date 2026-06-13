@@ -1,18 +1,14 @@
 import Image from 'next/image';
-import { HERO_ASSETS } from '../../helpers/heroAssets';
 import styles from './HeroBannerBottom.module.scss';
 
-export function HeroBannerBottom() {
+type HeroBannerBottomProps = {
+  ring: string;
+};
+
+export function HeroBannerBottom({ ring }: HeroBannerBottomProps) {
   return (
     <div className={styles.bannerBottom} aria-hidden="true">
-      
-      <Image
-        src={HERO_ASSETS.bannerRing}
-        alt=""
-        width={154}
-        height={153}
-        className={styles.ring}
-      />
+      {ring ? <Image src={ring} alt="" width={154} height={153} className={styles.ring} /> : null}
     </div>
   );
 }

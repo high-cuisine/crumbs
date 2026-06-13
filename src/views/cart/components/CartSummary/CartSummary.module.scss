@@ -1,0 +1,87 @@
+@import '../../../../shared/styles/variables';
+@import '../../../../shared/styles/mixins';
+
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 32px 28px;
+  border-radius: 22px;
+  background: $color-white;
+  box-shadow: 0 12px 40px rgba(76, 64, 58, 0.12);
+}
+
+.checkout {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  min-width: 247px;
+  height: 46px;
+  padding: 0 24px;
+  border-radius: $radius-pill;
+  background: $gradient-button;
+  box-shadow: $shadow-button;
+  font-family: $font-body;
+  font-weight: 700;
+  font-size: 16px;
+  color: $color-white;
+  text-decoration: none;
+  transition: opacity $transition-base;
+
+  &:hover {
+    opacity: 0.95;
+  }
+}
+
+.note {
+  margin: 22px 0 0;
+  font-family: $font-alt;
+  font-size: 13px;
+  line-height: 1.35;
+  color: #868686;
+}
+
+.divider {
+  margin: 22px 0 20px;
+  height: 1px;
+  background: #efe9e9;
+}
+
+.headRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.headTitle {
+  font-family: $font-body;
+  font-weight: 700;
+  font-size: 16px;
+  color: $color-text;
+}
+
+.headCount {
+  font-family: $font-alt;
+  font-size: 13px;
+  color: #868686;
+}
+
+.row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  font-family: $font-alt;
+  font-size: 14px;
+  color: $color-text;
+}
+
+.value {
+  font-family: $font-body;
+  font-weight: 700;
+  font-size: 18px;
+  white-space: nowrap;
+  color: $color-text;
+}

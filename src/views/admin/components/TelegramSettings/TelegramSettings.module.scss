@@ -1,0 +1,142 @@
+.container {
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sectionTitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: #18181b;
+}
+
+.sectionNote {
+  font-size: 14px;
+  color: #71717a;
+  line-height: 1.5;
+}
+
+.tokenStatus {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  background: #f4f4f5;
+  font-size: 14px;
+}
+
+.tokenOk {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.tokenMissing {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.recipients {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.recipientRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.recipientInput {
+  flex: 1;
+  padding: 10px 14px;
+  border: 1px solid #e4e4e7;
+  border-radius: 8px;
+  font-size: 14px;
+
+  &:focus {
+    outline: 2px solid rgba(174, 15, 145, 0.3);
+    outline-offset: 1px;
+  }
+}
+
+.removeBtn {
+  padding: 8px 12px;
+  border: 1px solid #e4e4e7;
+  border-radius: 8px;
+  background: white;
+  color: #ef4444;
+  cursor: pointer;
+  font-size: 13px;
+
+  &:hover {
+    background: #fee2e2;
+  }
+}
+
+.addRow {
+  display: flex;
+  gap: 8px;
+}
+
+.addInput {
+  flex: 1;
+  padding: 10px 14px;
+  border: 1px solid #e4e4e7;
+  border-radius: 8px;
+  font-size: 14px;
+
+  &:focus {
+    outline: 2px solid rgba(174, 15, 145, 0.3);
+    outline-offset: 1px;
+  }
+}
+
+.addBtn {
+  padding: 10px 20px;
+  border-radius: 8px;
+  background: #18181b;
+  color: white;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+
+  &:hover {
+    background: #27272a;
+  }
+}
+
+.saveBtn {
+  padding: 12px 32px;
+  border-radius: 8px;
+  background: linear-gradient(123deg, #7b317c 0%, #e059e2 100%);
+  color: white;
+  border: none;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity 0.2s;
+
+  &:disabled {
+    opacity: 0.5;
+  }
+}
+
+.status {
+  font-size: 14px;
+  color: #166534;
+
+  &.statusError {
+    color: #991b1b;
+  }
+}

@@ -5,6 +5,14 @@ $hero-desktop-max-width: 1440px;
 
 .hero {
   position: relative;
+
+  @media(max-width: 1024) {
+    max-height: 600px;
+  }
+
+  @media(max-width: 380px) {
+    max-height: 500px;
+  }
 }
 
 .stage {

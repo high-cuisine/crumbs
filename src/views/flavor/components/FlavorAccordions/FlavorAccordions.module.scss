@@ -1,0 +1,25 @@
+@import '../../../../shared/styles/variables';
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.text {
+  margin: 0 0 12px;
+}
+
+.nutrition {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.nutritionTitle {
+  margin-bottom: 2px;
+  font-weight: 700;
+}

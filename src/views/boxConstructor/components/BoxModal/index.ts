@@ -1,0 +1,1 @@
+export { BoxModal } from './BoxModal';

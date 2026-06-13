@@ -13,6 +13,10 @@
   min-height: 507px;
   padding-top: 0;
   padding-bottom: 0;
+
+  @media(max-width: 768px) {
+    width: 110vw;
+  }
 }
 
 .content {
@@ -28,6 +32,7 @@
   width: 287px;
   max-width: 100%;
   margin-top: 30px;
+  font-weight: 700!important;
 
   a,
   button {
@@ -35,6 +40,7 @@
     min-height: 74px;
     font-size: 26px;
     line-height: 1.219;
+    font-weight: 700!important;
   }
 }
 
@@ -70,8 +76,8 @@
   }
 
   .inner {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    align-items: stretch;
+    display: flex;
+    flex-direction: column;
     min-height: auto;
     padding: 0;
     padding-inline: 0;
@@ -81,22 +87,22 @@
   }
 
   .content {
-    align-items: flex-end;
+    align-items: flex-start;
     justify-content: flex-start;
-    gap: 0;
-    padding: 20px 18px 22px 14px;
+    gap: 28px;
+    padding: 60px 44px 52px;
+    background: transparent;
   }
 
-  .button {
-    width: min(100%, 180px);
-    margin-top: 14px;
-
-    a,
-    button {
-      min-height: 50px;
-      padding: 12px 20px;
-      font-size: 20px;
-      line-height: 1.22;
-    }
+  // className передаётся прямо на <a> внутри Button, поэтому стилизуем сам элемент.
+  // .content .button нужен для приоритета над Button .md (одинарная специфичность).
+  .content .button {
+    align-self: center;
+    width: min(100%, 287px);
+    min-height: 74px;
+    margin-top: 0;
+    padding: 16px 24px;
+    font-size: 26px;
+    line-height: 1.22;
   }
 }

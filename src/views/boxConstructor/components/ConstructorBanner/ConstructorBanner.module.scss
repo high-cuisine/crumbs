@@ -1,0 +1,78 @@
+@import '../../../../shared/styles/variables';
+@import '../../../../shared/styles/mixins';
+
+.banner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 166px;
+  padding: 24px;
+  background: #f0bdd3;
+  overflow: hidden;
+}
+
+.text {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  max-width: 640px;
+  font-family: $font-alt;
+  font-weight: 400;
+  font-size: 27px;
+  line-height: 1.2;
+  color: #2f2f2f;
+  text-align: center;
+}
+
+.blobLeft,
+.blobRight {
+  position: absolute;
+  height: auto;
+  pointer-events: none;
+}
+
+.blobLeft {
+  top: -12px;
+  left: 75px;
+  width: 188px;
+}
+
+.blobRight {
+  right: 178px;
+  bottom: 0;
+  width: 117px;
+}
+
+@include respond(tablet) {
+  .blobLeft {
+    left: 16px;
+    width: 140px;
+  }
+
+  .blobRight {
+    right: 24px;
+    width: 96px;
+  }
+}
+
+@include respond(mobile) {
+  .banner {
+    min-height: 132px;
+    padding: 20px 24px;
+  }
+
+  .text {
+    font-size: 19px;
+  }
+
+  .blobLeft {
+    left: -24px;
+    width: 100px;
+  }
+
+  .blobRight {
+    right: -16px;
+    width: 72px;
+  }
+}

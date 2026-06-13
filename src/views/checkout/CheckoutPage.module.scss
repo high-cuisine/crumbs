@@ -1,0 +1,40 @@
+@import '../../shared/styles/variables';
+@import '../../shared/styles/mixins';
+
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: $color-white;
+}
+
+.main {
+  flex: 1 1 auto;
+}
+
+.inner {
+  padding-top: 48px;
+  padding-bottom: 96px;
+}
+
+.title {
+  margin: 0 0 32px;
+  font-family: $font-chicoree;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1.2;
+  color: $color-black;
+  text-align: center;
+}
+
+@include respond(mobile) {
+  .inner {
+    padding-top: 32px;
+    padding-bottom: 56px;
+  }
+
+  .title {
+    margin-bottom: 24px;
+    font-size: 28px;
+  }
+}

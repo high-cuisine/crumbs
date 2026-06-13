@@ -14,6 +14,28 @@
   object-fit: cover;
 }
 
+// Медиа выезжает слева
+.media {
+  opacity: 0;
+  translate: -56px 0;
+  transition:
+    opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    translate 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.media.in {
+  opacity: 1;
+  translate: 0 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .media {
+    opacity: 1;
+    translate: 0 0;
+    transition: none;
+  }
+}
+
 .play {
   position: absolute;
   top: 50%;
@@ -24,20 +46,28 @@
 @include respond(tablet) {
   .media {
     height: clamp(300px, 46vw, 460px);
-    width:109%
+    width: 100%;
   }
 }
 
 @include respond(mobile) {
   .media {
-    height: 100%;
-    min-height: 100%;
-    aspect-ratio: 424 / 359;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 415 / 359;
     border-radius: 0;
-    width:100%
+  }
+
+  .image {
+    object-position: center 40%;
   }
 
   .play {
-    transform: translate(-50%, -50%) scale(0.75);
+    transform: translate(-50%, -50%) scale(0.85);
+  }
+
+  // На мобилке медиа во всю ширину — проявляем снизу, без бокового сдвига
+  .media {
+    translate: 0 36px;
   }
 }

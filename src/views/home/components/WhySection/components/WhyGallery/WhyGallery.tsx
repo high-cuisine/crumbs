@@ -1,13 +1,29 @@
+'use client';
+
 import Image from 'next/image';
-import { WHY_GALLERY } from '@/views/home/helpers';
+import type { HomeContent } from '@/server/content/schema';
+import { classNames } from '@/shared/helpers/classNames';
+import { useInView } from '@/shared/hooks';
 import styles from './WhyGallery.module.scss';
 
-export function WhyGallery() {
+type WhyGalleryProps = {
+  items: HomeContent['why']['gallery'];
+};
+
+export function WhyGallery({ items }: WhyGalleryProps) {
+  const { ref, inView } = useInView<HTMLDivElement>();
+
   return (
-    <div className={styles.gallery}>
-      {WHY_GALLERY.map((item) => (
-        <div key={item.id} className={styles.item}>
-          <Image src={item.image} alt={item.alt} fill className={styles.image} sizes="(max-width: 768px) 50vw, 255px" />
+    <div ref={ref} className={classNames(styles.gallery, inView && styles.in)}>
+      {items.map((item, index) => (
+        <div key={`${item.src}-${index}`} className={styles.item}>
+          <Image
+            src={item.src}
+            alt={item.alt}
+            fill
+            className={styles.image}
+            sizes="(max-width: 768px) 50vw, 255px"
+          />
         </div>
       ))}
     </div>

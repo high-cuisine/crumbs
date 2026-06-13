@@ -1,14 +1,24 @@
+'use client';
+
 import Image from 'next/image';
+import type { HomeContent } from '@/server/content/schema';
 import { PlayButton } from '@/shared/UI/PlayButton';
-import { PROMO_ASSETS } from '../../helpers/promoAssets';
+import { classNames } from '@/shared/helpers/classNames';
+import { useInView } from '@/shared/hooks';
 import styles from './PromoMedia.module.scss';
 
-export function PromoMedia() {
+type PromoMediaProps = {
+  media: HomeContent['promo']['media'];
+};
+
+export function PromoMedia({ media }: PromoMediaProps) {
+  const { ref, inView } = useInView<HTMLDivElement>();
+
   return (
-    <div className={styles.media}>
+    <div ref={ref} className={classNames(styles.media, inView && styles.in)}>
       <Image
-        src={PROMO_ASSETS.media}
-        alt="Печенье на ложке"
+        src={media.src}
+        alt={media.alt}
         fill
         className={styles.image}
         sizes="(max-width: 768px) 100vw, 457px"

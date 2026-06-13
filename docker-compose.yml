@@ -1,0 +1,34 @@
+services:
+  web:
+    build: .
+    image: wow-crumbs-mini-site
+    ports:
+      - '3000:3000'
+    environment:
+      # ОБЯЗАТЕЛЬНО задайте надёжные значения (через .env или окружение):
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD:-changeme}
+      - ADMIN_SESSION_SECRET=${ADMIN_SESSION_SECRET:-please-change-this-secret}
+      # Telegram-бот для приёма заказов (без них заказ не уйдёт в чат):
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN:-}
+      - TELEGRAM_CHAT_ID=${TELEGRAM_CHAT_ID:-}
+      - DATA_DIR=/app/data
+      - UPLOADS_DIR=/app/public/uploads
+    volumes:
+      # Персистентность БД контента и загруженных изображений.
+      - wc_data:/app/data
+      - wc_uploads:/app/public/uploads
+    restart: unless-stopped
+    healthcheck:
+      test:
+        - CMD
+        - node
+        - '-e'
+        - "fetch('http://127.0.0.1:3000/').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 40s
+
+volumes:
+  wc_data:
+  wc_uploads:

@@ -10,6 +10,28 @@
   object-fit: contain;
 }
 
+// Иллюстрация выезжает справа
+.illustration {
+  opacity: 0;
+  translate: 64px 0;
+  transition:
+    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    translate 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.illustration.in {
+  opacity: 1;
+  translate: 0 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .illustration {
+    opacity: 1;
+    translate: 0 0;
+    transition: none;
+  }
+}
+
 @include respond(mobile) {
   .illustration {
     width: 100%;
@@ -18,7 +40,7 @@
   }
 
   .image {
-    object-fit: cover;
-    object-position: center top;
+    object-fit: contain;
+    object-position: center bottom;
   }
 }

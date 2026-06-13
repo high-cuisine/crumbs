@@ -1,0 +1,135 @@
+@import '../../../../shared/styles/variables';
+@import '../../../../shared/styles/mixins';
+
+.card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  aspect-ratio: 1 / 1;
+  border-radius: 16px;
+  border: 1px solid transparent;
+  background:
+    linear-gradient(#dfdfdf, #dfdfdf) padding-box,
+    linear-gradient(135deg, #bc4ead, #f4cccc) border-box;
+  overflow: hidden;
+}
+
+.media {
+  position: relative;
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 90%;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.cookie {
+  position: relative;
+  width: 56%;
+  height: auto;
+  // Фото печенья на белом фоне — убираем белизну на сером.
+  mix-blend-mode: multiply;
+  transition: transform $transition-base;
+
+  .media:hover & {
+    transform: scale(1.06);
+  }
+}
+
+.panel {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 16px 18px;
+  border-radius: 16px;
+  background: linear-gradient(120deg, #dd93d3 0%, #f4cccc 100%);
+}
+
+.counter {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.step {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 43px;
+  height: 24px;
+  padding: 0;
+  border: 1px solid $color-white;
+  border-radius: 3px;
+  background: transparent;
+  color: $color-black;
+  font-family: $font-alt;
+  font-size: 19px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background $transition-base, opacity $transition-base;
+
+  &:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.45);
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+}
+
+.count {
+  min-width: 16px;
+  font-family: $font-alt;
+  font-size: 19px;
+  line-height: 1;
+  color: $color-black;
+  text-align: center;
+}
+
+.name {
+  margin: 0;
+  font-family: $font-alt;
+  font-weight: 400;
+  font-size: 21px;
+  line-height: 1.2;
+  color: $color-black;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+@include respond(mobile) {
+  .panel {
+    padding: 12px 10px 14px;
+    gap: 6px;
+  }
+
+  .counter {
+    gap: 8px;
+  }
+
+  .step {
+    width: 34px;
+    height: 22px;
+    font-size: 16px;
+  }
+
+  .count {
+    font-size: 16px;
+  }
+
+  .name {
+    font-size: 16px;
+  }
+}

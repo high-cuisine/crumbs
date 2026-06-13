@@ -1,0 +1,1 @@
+export { HitsProductGrid } from './HitsProductGrid';

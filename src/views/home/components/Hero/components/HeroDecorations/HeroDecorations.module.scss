@@ -118,6 +118,112 @@ $hero-desktop-max-width: 1440px;
   aspect-ratio: 662 / 678;
 }
 
+// === Анимации появления ===
+// Двигаем декор через CSS-свойство translate, не затрагивая существующий transform
+// (scale/rotate у печенья остаются нетронутыми).
+
+// На баннере «двигается» именно печенье — выезжает с боков.
+.cookieMain {
+  opacity: 0;
+  translate: 140px 0;
+  transition:
+    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    translate 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.cookieSecondary {
+  opacity: 0;
+  translate: -140px 0;
+  transition:
+    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.1s,
+    translate 1s cubic-bezier(0.22, 1, 0.36, 1) 0.1s;
+}
+
+// Остальной декор баннера просто мягко проявляется (без бокового движения).
+.scribble,
+.scribbleTop,
+.scribbleSecondary,
+.blurCircle,
+.ring,
+.zigzag,
+.crumbOne,
+.crumbTwo,
+.crumbThree,
+.crumbFour,
+.crumbFive {
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.crumbTwo { transition-delay: 0.1s; }
+.crumbThree { transition-delay: 0.2s; }
+.crumbFour { transition-delay: 0.3s; }
+.crumbFive { transition-delay: 0.4s; }
+
+.in {
+  .cookieMain,
+  .cookieSecondary {
+    opacity: 1;
+    translate: 0 0;
+  }
+
+  .scribble,
+  .scribbleTop,
+  .scribbleSecondary,
+  .blurCircle,
+  .ring,
+  .zigzag,
+  .crumbOne,
+  .crumbTwo,
+  .crumbThree,
+  .crumbFour,
+  .crumbFive {
+    opacity: 1;
+  }
+
+  // Лёгкое бесконечное покачивание крошек после проявления
+  .crumbOne { animation: heroFloat 4s ease-in-out 0.6s infinite; }
+  .crumbTwo { animation: heroFloat 4.6s ease-in-out 0.8s infinite; }
+  .crumbThree { animation: heroFloat 3.8s ease-in-out 0.7s infinite; }
+  .crumbFour { animation: heroFloat 5.2s ease-in-out 0.9s infinite; }
+  .crumbFive { animation: heroFloat 4.2s ease-in-out 1s infinite; }
+}
+
+@keyframes heroFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-9px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cookieMain,
+  .cookieSecondary,
+  .scribble,
+  .scribbleTop,
+  .scribbleSecondary,
+  .blurCircle,
+  .ring,
+  .zigzag,
+  .crumbOne,
+  .crumbTwo,
+  .crumbThree,
+  .crumbFour,
+  .crumbFive {
+    opacity: 1;
+    translate: 0 0;
+    transition: none;
+  }
+
+  .in {
+    .crumbOne,
+    .crumbTwo,
+    .crumbThree,
+    .crumbFour,
+    .crumbFive {
+      animation: none;
+    }
+  }
+}
+
 @media (min-width: 1025px) {
   .decorations {
     max-width: $hero-desktop-max-width;
@@ -368,5 +474,14 @@ $hero-desktop-max-width: 1440px;
     right: -20%;
     width: clamp(210px, 64vw, 300px);
     transform: none;
+  }
+
+  // На мобилке офсеты меньше — печенье и так частично за краем, избегаем гориз. скролла
+  .cookieMain {
+    translate: 70px 0;
+  }
+
+  .cookieSecondary {
+    translate: -70px 0;
   }
 }

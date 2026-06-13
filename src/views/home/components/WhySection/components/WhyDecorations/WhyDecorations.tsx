@@ -1,31 +1,28 @@
+'use client';
+
 import Image from 'next/image';
-import { WHY_ASSETS } from '../../helpers/whyAssets';
+import { classNames } from '@/shared/helpers/classNames';
+import { useInView } from '@/shared/hooks';
 import styles from './WhyDecorations.module.scss';
 
-export function WhyDecorations() {
+type WhyDecorationsProps = {
+  hook: string;
+  squiggleLeft: string;
+  squiggleRight: string;
+};
+
+export function WhyDecorations({ hook, squiggleLeft, squiggleRight }: WhyDecorationsProps) {
+  const { ref, inView } = useInView<HTMLDivElement>();
+
   return (
-    <div className={styles.decorations} aria-hidden="true">
-      <Image
-        src={WHY_ASSETS.decorHook}
-        alt=""
-        width={123}
-        height={145}
-        className={styles.hook}
-      />
-      <Image
-        src={WHY_ASSETS.decorSquiggleLeft}
-        alt=""
-        width={73}
-        height={62}
-        className={styles.squiggleLeft}
-      />
-      <Image
-        src={WHY_ASSETS.decorSquiggleRight}
-        alt=""
-        width={85}
-        height={59}
-        className={styles.squiggleRight}
-      />
+    <div
+      ref={ref}
+      className={classNames(styles.decorations, inView && styles.in)}
+      aria-hidden="true"
+    >
+      <Image src={hook} alt="" width={123} height={145} className={styles.hook} />
+      <Image src={squiggleLeft} alt="" width={73} height={62} className={styles.squiggleLeft} />
+      <Image src={squiggleRight} alt="" width={85} height={59} className={styles.squiggleRight} />
     </div>
   );
 }

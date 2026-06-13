@@ -1,0 +1,40 @@
+@import '../../../../shared/styles/variables';
+@import '../../../../shared/styles/mixins';
+
+.hero {
+  padding-top: 45px;
+  padding-bottom: 64px;
+}
+
+.title {
+  margin: 0 0 40px;
+  font-family: $font-chicoree;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1.37;
+  color: $color-black;
+  text-align: center;
+}
+
+.banner {
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.bannerImage {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@include respond(mobile) {
+  .hero {
+    padding-top: 28px;
+    padding-bottom: 40px;
+  }
+
+  .title {
+    margin-bottom: 24px;
+    font-size: 28px;
+  }
+}

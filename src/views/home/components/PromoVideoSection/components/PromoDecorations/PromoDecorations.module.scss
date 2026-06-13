@@ -12,7 +12,24 @@
   right: -150px;
   width: clamp(80px, 9.1vw, 132px);
   height: auto;
+  opacity: 0;
+  translate: 60px 0;
+  transition:
+    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    translate 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.in .ring {
   opacity: 0.71;
+  translate: 0 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ring {
+    opacity: 0.71;
+    translate: 0 0;
+    transition: none;
+  }
 }
 
 @include respond(mobile) {

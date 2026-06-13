@@ -1,0 +1,108 @@
+@import '../../../../shared/styles/variables';
+@import '../../../../shared/styles/mixins';
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgb(0 0 0 / 45%);
+}
+
+.panel {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  width: min(960px, 100%);
+  max-height: calc(100vh - 48px);
+  overflow: auto;
+  padding: 32px;
+  background: #fff;
+  border-radius: 24px;
+}
+
+.close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  border: none;
+  background: transparent;
+  font-size: 24px;
+  cursor: pointer;
+  color: #666;
+}
+
+.mockup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f0f0f0;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.mockupImage {
+  width: 100%;
+  height: auto;
+}
+
+.config {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.badge {
+  font-family: $font-body;
+  font-weight: 700;
+  font-size: 24px;
+  color: $color-black;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.cart {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: auto;
+  padding: 16px 32px;
+  border: 3px solid $color-accent;
+  border-radius: $radius-pill;
+  background: transparent;
+  font-family: $font-alt;
+  font-weight: 700;
+  font-size: 20px;
+  color: #353535;
+  cursor: pointer;
+  transition: background $transition-base, color $transition-base, opacity $transition-base;
+
+  &:hover:not(:disabled) {
+    background: $color-accent;
+    color: $color-white;
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+}
+
+@include respond(mobile) {
+  .panel {
+    grid-template-columns: 1fr;
+    padding: 24px 20px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

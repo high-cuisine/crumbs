@@ -1,3 +1,7 @@
+'use client';
+
+import { classNames } from '@/shared/helpers/classNames';
+import { useInView } from '@/shared/hooks';
 import styles from './HitsGrid.module.scss';
 
 type HitsGridProps = {
@@ -5,5 +9,11 @@ type HitsGridProps = {
 };
 
 export function HitsGrid({ children }: HitsGridProps) {
-  return <div className={styles.grid}>{children}</div>;
+  const { ref, inView } = useInView<HTMLDivElement>();
+
+  return (
+    <div ref={ref} className={classNames(styles.grid, inView && styles.in)}>
+      {children}
+    </div>
+  );
 }

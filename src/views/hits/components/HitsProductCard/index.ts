@@ -1,0 +1,1 @@
+export { HitsProductCard } from './HitsProductCard';

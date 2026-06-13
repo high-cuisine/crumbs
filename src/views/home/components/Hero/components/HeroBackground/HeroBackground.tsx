@@ -1,10 +1,6 @@
 import Image from 'next/image';
 import styles from './HeroBackground.module.scss';
 
-const BG = {
-  wave: '/images/hero/hero-bg-wave.svg',
-} as const;
-
 const DESKTOP_BLOB_PATH =
   'M643.812 592.312C612.878 585.88 574.519 562.911 544.291 551.925C470.05 524.943 126.34 675.99 12.6755 551.925C-122.929 403.912 -29.8336 0 -29.8336 0H724.83H1494L1509 558.388C1509 558.388 1232.56 556.296 1151.67 551.925C964.919 541.833 828.546 630.723 643.812 592.312Z';
 
@@ -35,26 +31,18 @@ function BlobSvg({
   );
 }
 
-export function HeroBackground() {
+type HeroBackgroundProps = {
+  wave: string;
+};
+
+export function HeroBackground({ wave }: HeroBackgroundProps) {
   return (
     <div className={styles.backgroundViewport} aria-hidden="true">
       <div className={styles.background}>
         <div className={styles.blobWrapperDesktop}>
-          <BlobSvg
-            className={styles.blobDesktopMirror}
-            viewBox="0 0 1440 602"
-            path={DESKTOP_BLOB_PATH}
-          />
-          <BlobSvg
-            className={styles.blobDesktop}
-            viewBox="0 0 1440 602"
-            path={DESKTOP_BLOB_PATH}
-          />
-          <BlobSvg
-            className={styles.blobDesktopMirror}
-            viewBox="0 0 1440 602"
-            path={DESKTOP_BLOB_PATH}
-          />
+          <BlobSvg className={styles.blobDesktopMirror} viewBox="0 0 1440 602" path={DESKTOP_BLOB_PATH} />
+          <BlobSvg className={styles.blobDesktop} viewBox="0 0 1440 602" path={DESKTOP_BLOB_PATH} />
+          <BlobSvg className={styles.blobDesktopMirror} viewBox="0 0 1440 602" path={DESKTOP_BLOB_PATH} />
         </div>
 
         <div className={styles.blobWrapperMobile}>
@@ -78,7 +66,9 @@ export function HeroBackground() {
           />
         </div>
 
-        <Image src={BG.wave} alt="" width={1603} height={499} className={styles.wave} />
+        {wave ? (
+          <Image src={wave} alt="" width={1603} height={499} className={styles.wave} />
+        ) : null}
       </div>
     </div>
   );

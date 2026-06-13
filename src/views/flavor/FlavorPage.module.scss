@@ -1,0 +1,89 @@
+@import '../../shared/styles/variables';
+@import '../../shared/styles/mixins';
+
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: $color-white;
+}
+
+.main {
+  flex: 1 1 auto;
+  padding: 24px 0 72px;
+}
+
+.topBar {
+  margin-bottom: 20px;
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: 440px minmax(0, 1fr);
+  grid-template-areas:
+    'gallery name'
+    'gallery buy'
+    'gallery accordions';
+  column-gap: 56px;
+  row-gap: 18px;
+  align-items: start;
+}
+
+.inner > :nth-child(1) {
+  grid-area: name;
+}
+
+.inner > :nth-child(2) {
+  grid-area: gallery;
+  align-self: start;
+}
+
+.inner > :nth-child(3) {
+  grid-area: buy;
+}
+
+.inner > :nth-child(4) {
+  grid-area: accordions;
+  margin-top: 18px;
+}
+
+.name {
+  margin: 0;
+  font-family: $font-chicoree;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1.2;
+  color: $color-black;
+}
+
+@include respond(tablet) {
+  .inner {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'name'
+      'gallery'
+      'buy'
+      'accordions';
+    row-gap: 20px;
+    text-align: center;
+  }
+
+  .name {
+    font-size: 30px;
+  }
+
+  .inner > :nth-child(4) {
+    margin-top: 8px;
+    text-align: left;
+  }
+}
+
+@include respond(mobile) {
+  .main {
+    padding: 24px 0 48px;
+  }
+
+  .name {
+    font-size: 26px;
+  }
+}

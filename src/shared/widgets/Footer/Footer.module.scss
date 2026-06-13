@@ -85,6 +85,8 @@
 .phoneText {
   display: inline-block;
   color: $color-white;
+  font-family: var(--font-chicoree-em),"Chicoree Em.",sans-serif;
+  font-size: clamp(1.5625rem, 1.4525rem + 0.4695vw, 1.875rem);
 }
 
 .mail {

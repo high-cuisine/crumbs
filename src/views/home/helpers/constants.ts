@@ -8,10 +8,10 @@ export const SITE = {
 } as const;
 
 export const NAV_ITEMS = [
-  { label: 'Хиты', href: '#hits', id: 'hits' },
-  { label: 'Коробки', href: '#packaging', id: 'packaging' },
-  { label: 'Доставка', href: '#delivery', id: 'delivery' },
-  { label: 'Оплата', href: '#payment', id: 'payment' },
+  { label: 'Хиты', href: '/hits', id: 'hits' },
+  { label: 'Коробки', href: '/boxes', id: 'packaging' },
+  { label: 'Доставка', href: '/delivery', id: 'delivery' },
+  { label: 'Оплата', href: '/#payment', id: 'payment' },
 ] as const;
 
 export const HITS_PRODUCTS = [

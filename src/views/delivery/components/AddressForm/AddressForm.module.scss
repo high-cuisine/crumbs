@@ -1,0 +1,89 @@
+@import '../../../../shared/styles/variables';
+@import '../../../../shared/styles/mixins';
+
+.card {
+  width: 400px;
+  max-width: 100%;
+  padding: 24px 26px 28px;
+  border-radius: 22px;
+  background: $color-white;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.16);
+}
+
+.title {
+  margin: 0 0 20px;
+  font-family: $font-alt;
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1.2;
+  color: $color-black;
+  text-align: center;
+}
+
+.fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 13px;
+}
+
+.input {
+  grid-column: span 1;
+  min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
+  height: 48px;
+  padding: 0 18px;
+  border: none;
+  border-radius: 13px;
+  background: #f8dce1;
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.07);
+  font-family: $font-body;
+  font-weight: 500;
+  font-size: 15px;
+  color: $color-black;
+
+  &::placeholder {
+    color: #7c7c7c;
+  }
+
+  &:focus {
+    outline: 2px solid $color-pink-soft;
+    outline-offset: 1px;
+  }
+}
+
+.input[data-span='full'] {
+  grid-column: 1 / -1;
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.remove {
+  border: 2px solid transparent;
+  background:
+    linear-gradient($color-white, $color-white) padding-box,
+    linear-gradient(120deg, #7b317c, #e059e2) border-box;
+}
+
+@include respond(mobile) {
+  .card {
+    width: 100%;
+    padding: 22px 20px 24px;
+    border-radius: 20px;
+  }
+
+  .title {
+    margin-bottom: 18px;
+    font-size: 24px;
+  }
+
+  .input {
+    height: 46px;
+    font-size: 15px;
+  }
+}

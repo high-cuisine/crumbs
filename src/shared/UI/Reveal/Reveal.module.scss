@@ -1,0 +1,45 @@
+.reveal {
+  opacity: 0;
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    translate 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, translate;
+}
+
+.up {
+  translate: 0 34px;
+}
+
+.left {
+  translate: -52px 0;
+}
+
+.right {
+  translate: 52px 0;
+}
+
+.scale {
+  translate: 0 0;
+  transform: scale(0.9);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.in {
+  opacity: 1;
+  translate: 0 0;
+
+  &.scale {
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    translate: 0 0;
+    transform: none;
+    transition: none;
+  }
+}

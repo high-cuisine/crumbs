@@ -1,51 +1,37 @@
 import Link from 'next/link';
+import type { CommonContent } from '@/server/content/schema';
 import { Container } from '@/shared/UI/Container';
-import { SITE } from '@/views/home/helpers';
 import styles from './Footer.module.scss';
 
-export function Footer() {
+type FooterProps = {
+  common: CommonContent;
+};
+
+export function Footer({ common }: FooterProps) {
+  const { site, socials, footer } = common;
+
   return (
     <footer className={styles.footer}>
-      <img
-        src="/images/footer/footer-decor-left.svg"
-        alt=""
-        className={styles.decorLeft}
-        aria-hidden="true"
-      />
-      <img
-        src="/images/footer/footer-decor-right.svg"
-        alt=""
-        className={styles.decorRight}
-        aria-hidden="true"
-      />
+      <img src={footer.decorLeft} alt="" className={styles.decorLeft} aria-hidden="true" />
+      <img src={footer.decorRight} alt="" className={styles.decorRight} aria-hidden="true" />
 
       <Container className={styles.inner}>
-        <h2 className={styles.title}>Контактная информация</h2>
+        <h2 className={styles.title}>{footer.title}</h2>
 
-        <a href={SITE.phoneHref} className={styles.phone}>
-          <img
-            src="/images/footer/footer-phone.svg"
-            alt=""
-            className={styles.phoneIcon}
-            aria-hidden="true"
-          />
-          <span className={styles.phoneText}>{SITE.phone}</span>
+        <a href={site.phoneHref} className={styles.phone}>
+          <img src={footer.phoneIcon} alt="" className={styles.phoneIcon} aria-hidden="true" />
+          <span className={styles.phoneText}>{site.phone}</span>
         </a>
 
-        <p className={styles.mail}>mail:</p>
-        <p className={styles.address}>Адрес</p>
+        <p className={styles.mail}>{footer.mailText}</p>
+        <p className={styles.address}>{footer.addressText}</p>
 
         <div className={styles.socials}>
-          <Link href="https://vk.com" className={styles.socialLink} aria-label="VK">
-            <img src="/images/footer/footer-vk.svg" alt="" className={styles.socialIcon} aria-hidden="true" />
+          <Link href={socials.vk} className={styles.socialLink} aria-label="VK">
+            <img src={footer.vkIcon} alt="" className={styles.socialIcon} aria-hidden="true" />
           </Link>
-          <Link href="https://t.me" className={styles.socialLink} aria-label="Telegram">
-            <img
-              src="/images/footer/footer-telegram.svg"
-              alt=""
-              className={styles.socialIcon}
-              aria-hidden="true"
-            />
+          <Link href={socials.telegram} className={styles.socialLink} aria-label="Telegram">
+            <img src={footer.telegramIcon} alt="" className={styles.socialIcon} aria-hidden="true" />
           </Link>
         </div>
       </Container>

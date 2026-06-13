@@ -39,6 +39,37 @@
   font-weight: 600;
 }
 
+// Появление текста снизу
+.title,
+.body {
+  opacity: 0;
+  translate: 0 38px;
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    translate 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.body {
+  transition-delay: 0.14s;
+}
+
+.in {
+  .title,
+  .body {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .title,
+  .body {
+    opacity: 1;
+    translate: 0 0;
+    transition: none;
+  }
+}
+
 @include respond(tablet) {
   .text {
     align-items: flex-start;
@@ -62,21 +93,26 @@
 
 @include respond(mobile) {
   .text {
-    align-items: flex-end;
-    gap: 10px;
+    align-items: flex-start;
+    gap: 16px;
     max-width: 100%;
   }
 
   .title {
     max-width: 100%;
-    font-size: 22px;
-    line-height: 1.2;
-    text-align: right;
+    font-size: 25px;
+    line-height: 1.37;
+    text-align: left;
   }
 
   .body {
-    font-size: 10px;
-    line-height: 1.35;
-    text-align: right;
+    font-size: 16px;
+    line-height: 1.37;
+    text-align: left;
+    // Переносы строк сохраняем как в макете (white-space: pre-line из базовых стилей)
+  }
+
+  .subtitle {
+    font-weight: 700;
   }
 }

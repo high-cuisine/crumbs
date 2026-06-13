@@ -2,12 +2,12 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import type { CommonContent } from '@/server/content/schema';
 import { Badge } from '@/shared/UI/Badge';
 import { Container } from '@/shared/UI/Container';
 import { Icon } from '@/shared/UI/Icon';
 import { NavLink } from '@/shared/UI/NavLink';
 import { PhoneLink } from '@/shared/UI/PhoneLink';
-import { NAV_ITEMS, SITE } from '@/views/home/helpers';
 import { useActiveSection } from '@/views/home/hooks';
 import { MobileMenu } from './components/MobileMenu';
 import { useMobileMenu } from './hooks';
@@ -15,19 +15,21 @@ import styles from './Header.module.scss';
 
 type HeaderProps = {
   cartCount?: number;
+  common: CommonContent;
 };
 
-export function Header({ cartCount = 0 }: HeaderProps) {
-  const activeSection = useActiveSection(NAV_ITEMS.map((item) => item.id));
+export function Header({ cartCount = 0, common }: HeaderProps) {
+  const { site, nav, socials, header } = common;
+  const activeSection = useActiveSection(nav.map((item) => item.id));
   const { isOpen, toggle, close } = useMobileMenu();
 
   return (
     <header className={styles.header}>
       <Container className={styles.inner}>
-        <Link href="/" className={styles.logo} aria-label={SITE.name}>
+        <Link href="/" className={styles.logo} aria-label={site.name}>
           <Image
-            src="/images/logo.svg"
-            alt={SITE.name}
+            src={header.logo.src}
+            alt={header.logo.alt}
             width={118}
             height={59}
             priority
@@ -35,25 +37,21 @@ export function Header({ cartCount = 0 }: HeaderProps) {
           />
         </Link>
 
-        <PhoneLink phone={SITE.phone} href={SITE.phoneHref} className={styles.phone} />
+        <PhoneLink phone={site.phone} href={site.phoneHref} className={styles.phone} />
 
         <nav className={styles.nav} aria-label="Main navigation">
-          {NAV_ITEMS.map((item) => (
-            <NavLink
-              key={item.id}
-              href={item.href}
-              active={activeSection === item.id}
-            >
+          {nav.map((item) => (
+            <NavLink key={item.id} href={item.href} active={activeSection === item.id}>
               {item.label}
             </NavLink>
           ))}
         </nav>
 
         <div className={styles.actions}>
-          <button type="button" className={styles.iconButton} aria-label="Cart">
+          <Link href="/cart" className={styles.iconButton} aria-label="Cart">
             <Icon name="cart" />
             <Badge count={cartCount} className={styles.badge} />
-          </button>
+          </Link>
           <button type="button" className={styles.iconButton} aria-label="Profile">
             <Icon name="user" />
           </button>
@@ -66,11 +64,23 @@ export function Header({ cartCount = 0 }: HeaderProps) {
           aria-expanded={isOpen}
           onClick={toggle}
         >
-          <Icon name="menu" size={28} />
+          <span className={styles.burger} aria-hidden="true">
+            <span className={styles.burgerLine} />
+            <span className={styles.burgerLine} />
+            <span className={styles.burgerLine} />
+          </span>
         </button>
       </Container>
 
-      <MobileMenu isOpen={isOpen} onClose={close} activeSection={activeSection} />
+      <MobileMenu
+        isOpen={isOpen}
+        onClose={close}
+        activeSection={activeSection}
+        site={site}
+        nav={nav}
+        socials={socials}
+        logo={header.logo}
+      />
     </header>
   );
 }

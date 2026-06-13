@@ -30,6 +30,37 @@
   white-space: pre-line;
 }
 
+// Появление текста снизу со ступенчатой задержкой
+.title,
+.body {
+  opacity: 0;
+  translate: 0 40px;
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    translate 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.body {
+  transition-delay: 0.15s;
+}
+
+.in {
+  .title,
+  .body {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .title,
+  .body {
+    opacity: 1;
+    translate: 0 0;
+    transition: none;
+  }
+}
+
 @include respond(mobile) {
   .textBlock {
     gap: 14px;

@@ -1,0 +1,1 @@
+export { HitsBanner } from './HitsBanner';

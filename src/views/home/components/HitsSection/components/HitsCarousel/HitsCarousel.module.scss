@@ -6,35 +6,36 @@
   display: none;
 }
 
+.viewport {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+}
+
 .track {
   display: flex;
-  gap: 16px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding: 0 8px 8px;
-  @include hide-scrollbar;
+  gap: 14px;
+  will-change: transform;
+  touch-action: pan-y;
 }
 
 .arrowLeft,
 .arrowRight {
-  position: absolute;
-  top: 50%;
-  z-index: 2;
-  transform: translateY(-50%);
-  height: auto;
-  padding: 8px 0;
-}
-
-.arrowLeft {
-  left: -4px;
-}
-
-.arrowRight {
-  right: -4px;
+  flex: 0 0 auto;
+  height: 91px;
+  padding: 0;
 }
 
 @include respond(mobile) {
   .carousel {
-    display: none;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  // Centre the 91px arrows vertically on the 244px image area: 244/2 - 91/2.
+  .arrowLeft,
+  .arrowRight {
+    margin-top: 76px;
   }
 }

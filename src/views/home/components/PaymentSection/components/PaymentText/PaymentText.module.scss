@@ -3,27 +3,96 @@
 
 .text {
   max-width: 547px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  @media(max-width: 768px) {
+    align-items: center;
+  }
 }
 
-.copy {
+.title {
+  margin: 0;
+  font-family: $font-chicoree;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.219;
+  text-transform: uppercase;
+  color: $color-black;
+  text-align: left;
+
+  @media(max-width: 768px) {
+    margin-bottom: 20px;
+  }
+}
+
+.body {
   margin: 0;
   font-family: $font-alt;
   font-size: 18px;
   font-weight: 500;
-  line-height: 1.219;
+  line-height: 1.5;
   color: $color-black;
   text-align: left;
-  white-space: pre-line;
+}
+
+.accent {
+  margin: 0;
+  font-family: $font-alt;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.219;
+  color: $color-accent;
+  text-align: left;
+}
+
+// Появление текста снизу со ступенчатой задержкой
+.title,
+.body,
+.accent {
+  opacity: 0;
+  translate: 0 36px;
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    translate 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.body { transition-delay: 0.12s; }
+.accent { transition-delay: 0.22s; }
+
+.in {
+  .title,
+  .body,
+  .accent {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .title,
+  .body,
+  .accent {
+    opacity: 1;
+    translate: 0 0;
+    transition: none;
+  }
 }
 
 @include respond(mobile) {
   .text {
     max-width: 100%;
+    gap: 10px;
   }
 
-  .copy {
+  .title {
+    font-size: 25px;
+  }
+
+  .body,
+  .accent {
     font-size: 16px;
     line-height: 1.35;
-    text-align: left;
   }
 }

@@ -30,6 +30,37 @@
   text-align: left;
 }
 
+// Появление текста снизу со ступенчатой задержкой
+.title,
+.subtitle {
+  opacity: 0;
+  translate: 0 38px;
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    translate 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.subtitle {
+  transition-delay: 0.14s;
+}
+
+.in {
+  .title,
+  .subtitle {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .title,
+  .subtitle {
+    opacity: 1;
+    translate: 0 0;
+    transition: none;
+  }
+}
+
 @media (min-width: 901px) and (max-width: 1024px) {
   .content {
     width: 100%;

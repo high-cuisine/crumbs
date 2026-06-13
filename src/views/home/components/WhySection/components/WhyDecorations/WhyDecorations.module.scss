@@ -32,6 +32,47 @@
   width: clamp(48px, 6.1vw, 85px);
 }
 
+// Появление: декор выезжает сбоку
+.hook,
+.squiggleLeft {
+  opacity: 0;
+  translate: -56px 0;
+  transition:
+    opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    translate 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.squiggleRight {
+  opacity: 0;
+  translate: 56px 0;
+  transition:
+    opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.12s,
+    translate 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.12s;
+}
+
+.squiggleLeft {
+  transition-delay: 0.18s;
+}
+
+.in {
+  .hook,
+  .squiggleLeft,
+  .squiggleRight {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hook,
+  .squiggleLeft,
+  .squiggleRight {
+    opacity: 1;
+    translate: 0 0;
+    transition: none;
+  }
+}
+
 @include respond(mobile) {
   .decorations {
     display: none;

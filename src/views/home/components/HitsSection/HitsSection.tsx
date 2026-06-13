@@ -1,38 +1,45 @@
+import type { HomeContent } from '@/server/content/schema';
 import { Button } from '@/shared/UI/Button';
 import { Container } from '@/shared/UI/Container';
+import { Reveal } from '@/shared/UI/Reveal';
 import { SectionTitle } from '@/shared/UI/SectionTitle';
-import { HITS_PRODUCTS } from '@/views/home/helpers';
 import { HitsCarousel } from './components/HitsCarousel';
 import { HitsDecorations } from './components/HitsDecorations';
 import { HitsGrid } from './components/HitsGrid';
 import { HitsProductItem } from './components/HitsProductItem';
 import styles from './HitsSection.module.scss';
 
-export function HitsSection() {
+type HitsSectionProps = {
+  data: HomeContent['hits'];
+};
+
+export function HitsSection({ data }: HitsSectionProps) {
   return (
     <section id="hits" className={styles.section} aria-labelledby="hits-title">
-      <HitsDecorations />
+      <HitsDecorations blobLeft={data.decorBlobLeft} blobRight={data.decorBlobRight} />
       <Container className={styles.inner}>
-        <SectionTitle className={styles.title} align="center">
-          ХИТЫ
-        </SectionTitle>
+        <Reveal direction="up">
+          <SectionTitle className={styles.title} align="center">
+            {data.title}
+          </SectionTitle>
+        </Reveal>
         <HitsGrid>
-          {HITS_PRODUCTS.map((product) => (
+          {data.products.map((product) => (
             <HitsProductItem
               key={product.id}
               id={product.id}
               name={product.name}
               image={product.image}
-              overlayImage={'overlayImage' in product ? product.overlayImage : undefined}
+              overlayImage={product.overlayImage}
             />
           ))}
         </HitsGrid>
-        <HitsCarousel products={HITS_PRODUCTS} />
-        <div className={styles.action}>
-          <Button href="#packaging" size="lg">
-            Посмотреть хиты
+        <HitsCarousel products={data.products} />
+        <Reveal className={styles.action} direction="up">
+          <Button href={data.button.href} size="lg">
+            {data.button.label}
           </Button>
-        </div>
+        </Reveal>
       </Container>
     </section>
   );

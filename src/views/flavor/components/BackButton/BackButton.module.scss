@@ -1,0 +1,30 @@
+@import '../../../../shared/styles/variables';
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  font-family: $font-body;
+  font-weight: 600;
+  font-size: 15px;
+  color: $color-black;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity $transition-base;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.arrow {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-left: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+}

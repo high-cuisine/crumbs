@@ -1,0 +1,1 @@
+export { FlavorGrid } from './FlavorGrid';

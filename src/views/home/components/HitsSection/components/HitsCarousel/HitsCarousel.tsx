@@ -1,7 +1,7 @@
 'use client';
 
-import { useCallback, useRef } from 'react';
 import { ArrowButton } from '@/shared/UI/ArrowButton';
+import { useHitsCarousel } from '@/views/home/hooks';
 import { HitsProductItem } from '../HitsProductItem';
 import styles from './HitsCarousel.module.scss';
 
@@ -17,42 +17,48 @@ type HitsCarouselProps = {
 };
 
 export function HitsCarousel({ products }: HitsCarouselProps) {
-  const trackRef = useRef<HTMLDivElement>(null);
-
-  const scroll = useCallback((direction: 'left' | 'right') => {
-    const track = trackRef.current;
-    if (!track) return;
-    const cardWidth = track.firstElementChild?.clientWidth ?? 160;
-    const gap = 16;
-    track.scrollBy({
-      left: direction === 'left' ? -(cardWidth + gap) : cardWidth + gap,
-      behavior: 'smooth',
-    });
-  }, []);
+  const {
+    viewportRef,
+    trackStyle,
+    slides,
+    next,
+    prev,
+    onTransitionEnd,
+    onTouchStart,
+    onTouchEnd,
+  } = useHitsCarousel(products);
 
   return (
     <div className={styles.carousel}>
       <ArrowButton
         direction="left"
-        onClick={() => scroll('left')}
+        onClick={prev}
         label="Previous product"
         className={styles.arrowLeft}
       />
-      <div ref={trackRef} className={styles.track}>
-        {products.map((product) => (
-          <HitsProductItem
-            key={product.id}
-            id={product.id}
-            name={product.name}
-            image={product.image}
-            overlayImage={product.overlayImage}
-            variant="mobile"
-          />
-        ))}
+      <div className={styles.viewport} ref={viewportRef}>
+        <div
+          className={styles.track}
+          style={trackStyle}
+          onTransitionEnd={onTransitionEnd}
+          onTouchStart={onTouchStart}
+          onTouchEnd={onTouchEnd}
+        >
+          {slides.map(({ item, key }) => (
+            <HitsProductItem
+              key={key}
+              id={item.id}
+              name={item.name}
+              image={item.image}
+              overlayImage={item.overlayImage}
+              variant="mobile"
+            />
+          ))}
+        </div>
       </div>
       <ArrowButton
         direction="right"
-        onClick={() => scroll('right')}
+        onClick={next}
         label="Next product"
         className={styles.arrowRight}
       />

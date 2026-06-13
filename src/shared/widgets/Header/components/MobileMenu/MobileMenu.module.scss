@@ -2,44 +2,139 @@
 
 .overlay {
   position: fixed;
-  inset: $header-height-mobile 0 0;
-  z-index: 99;
-  background: rgba(0, 0, 0, 0.35);
-}
-
-.menu {
+  inset: 0;
+  z-index: 200;
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  padding: 24px $container-padding-mobile;
+  align-items: flex-start;
+  padding: 26px $container-padding-mobile 40px;
+  overflow: hidden;
   background: $color-pink-header;
-  border-bottom: 1px solid rgba(156, 82, 154, 0.15);
 }
 
-.phone {
-  font-size: 15px;
+.top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+
+  img {
+    width: 132px;
+    height: auto;
+  }
+}
+
+.close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.closeIcon {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 16px;
+}
+
+.line {
+  display: block;
+  width: 100%;
+  height: 2.5px;
+  border-radius: 4px;
+  background: $color-purple-menu;
+  transition: transform $transition-base, opacity $transition-base;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 22px;
+  margin-top: 30px;
+}
+
+.nav .link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: $font-body;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 1;
+  color: $color-text-muted;
+}
+
+.nav .linkActive {
+  color: $color-accent;
+}
+
+.fire {
+  flex-shrink: 0;
+  color: $color-accent;
+}
+
+.socials {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  margin-top: 34px;
+}
+
+.cart,
+.social {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.cart {
+  color: $color-accent;
+}
+
+.social {
+  color: $color-text-muted;
+}
+
+.overlay .phone {
+  margin-top: 38px;
+  gap: 12px;
+  font-size: 24px;
   font-weight: 700;
+  color: $color-text-muted;
 }
 
-.link {
-  font-size: 18px;
+.donut {
+  position: absolute;
+  top: 150px;
+  right: -26px;
+  width: 120px;
+  height: 120px;
+  border: 22px solid $color-pink-light;
+  border-radius: 50%;
+  pointer-events: none;
 }
 
-@media (max-width: 480px) {
-  .overlay {
-    inset: 78px 0 0;
-  }
-
-  .menu {
-    gap: 14px;
-    padding: 16px 20px 20px;
-  }
-
-  .phone {
-    font-size: 13px;
-  }
-
-  .link {
-    font-size: 16px;
-  }
+.squiggle {
+  position: absolute;
+  bottom: 40px;
+  left: -8px;
+  opacity: 0.63;
+  pointer-events: none;
 }

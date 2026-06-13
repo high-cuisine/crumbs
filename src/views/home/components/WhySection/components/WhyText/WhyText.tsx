@@ -1,20 +1,25 @@
+'use client';
+
 import { Heading, Text } from '@/shared/UI/Typography';
+import { classNames } from '@/shared/helpers/classNames';
+import { useInView } from '@/shared/hooks';
 import styles from './WhyText.module.scss';
 
-const BODY = `Мы создаём печенье, которое хочется разломить. Каждый вкус — это баланс текстуры, начинки и эмоции.
+type WhyTextProps = {
+  title: string;
+  body: string;
+};
 
-Без компромиссов и «Просто сладко». —
+export function WhyText({ title, body }: WhyTextProps) {
+  const { ref, inView } = useInView<HTMLDivElement>();
 
-та самая тягучая текстура NY cookies — много начинки внутри, а не «Намёк» — вкус, который не надо доедать — его хочется — готовим небольшими партиями, а не на поток — можно собрать набор под себя WOW! CRUMBS — когда хочется не просто попробовать, а вернуться снова.`;
-
-export function WhyText() {
   return (
-    <div className={styles.textBlock}>
+    <div ref={ref} className={classNames(styles.textBlock, inView && styles.in)}>
       <Heading as="h2" id="why-title" className={styles.title}>
-        Почему WOW CRUMBS?
+        {title}
       </Heading>
       <Text as="p" variant="body" className={styles.body}>
-        {BODY}
+        {body}
       </Text>
     </div>
   );

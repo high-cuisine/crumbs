@@ -27,20 +27,52 @@
   color: $color-text;
 }
 
+// Появление текста снизу со ступенчатой задержкой
+.title,
+.paragraph {
+  opacity: 0;
+  translate: 0 36px;
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    translate 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.paragraph:nth-of-type(1) { transition-delay: 0.12s; }
+.paragraph:nth-of-type(2) { transition-delay: 0.22s; }
+
+.in {
+  .title,
+  .paragraph {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .title,
+  .paragraph {
+    opacity: 1;
+    translate: 0 0;
+    transition: none;
+  }
+}
+
 @include respond(mobile) {
   .text {
     max-width: 100%;
-    align-items: flex-start;
+    align-items: center;
     text-align: left;
-    gap: 12px;
+    gap: 24px;
   }
 
   .title {
     font-size: 25px;
+    text-align: center;
+    margin-bottom: 17px;
   }
 
   .paragraph {
-    font-size: 14px;
-    line-height: 1.4;
+    font-size: 16px;
+    line-height: 1.5;
   }
 }

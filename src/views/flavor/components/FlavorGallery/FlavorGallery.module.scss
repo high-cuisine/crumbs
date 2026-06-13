@@ -1,0 +1,54 @@
+@import '../../../../shared/styles/variables';
+@import '../../../../shared/styles/mixins';
+
+.gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.main {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 440 / 531;
+  border-radius: 14px;
+  overflow: hidden;
+  background: $color-pink-card;
+}
+
+.mainImage {
+  object-fit: cover;
+}
+
+.thumbs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.thumb {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  overflow: hidden;
+  background: $color-pink-card;
+  cursor: pointer;
+  transition: border-color $transition-base;
+}
+
+.thumbActive {
+  border-color: $color-button-text;
+}
+
+.thumbImage {
+  object-fit: cover;
+}
+
+@include respond(mobile) {
+  .thumbs {
+    gap: 6px;
+  }
+}

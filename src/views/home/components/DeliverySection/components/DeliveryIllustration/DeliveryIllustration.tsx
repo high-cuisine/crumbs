@@ -1,12 +1,23 @@
+'use client';
+
 import Image from 'next/image';
+import type { HomeContent } from '@/server/content/schema';
+import { classNames } from '@/shared/helpers/classNames';
+import { useInView } from '@/shared/hooks';
 import styles from './DeliveryIllustration.module.scss';
 
-export function DeliveryIllustration() {
+type DeliveryIllustrationProps = {
+  illustration: HomeContent['delivery']['illustration'];
+};
+
+export function DeliveryIllustration({ illustration }: DeliveryIllustrationProps) {
+  const { ref, inView } = useInView<HTMLDivElement>();
+
   return (
-    <div className={styles.illustration}>
+    <div ref={ref} className={classNames(styles.illustration, inView && styles.in)}>
       <Image
-        src="/images/delivery-truck-3e2e36.png"
-        alt="Доставка WOW CRUMBS"
+        src={illustration.src}
+        alt={illustration.alt}
         fill
         className={styles.image}
         sizes="(max-width: 768px) 100vw, 560px"

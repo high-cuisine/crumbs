@@ -1,0 +1,1 @@
+export { FlavorCard } from './FlavorCard';

@@ -1,12 +1,23 @@
+'use client';
+
 import Image from 'next/image';
+import type { HomeContent } from '@/server/content/schema';
+import { classNames } from '@/shared/helpers/classNames';
+import { useInView } from '@/shared/hooks';
 import styles from './PaymentImage.module.scss';
 
-export function PaymentImage() {
+type PaymentImageProps = {
+  image: HomeContent['payment']['image'];
+};
+
+export function PaymentImage({ image }: PaymentImageProps) {
+  const { ref, inView } = useInView<HTMLDivElement>();
+
   return (
-    <div className={styles.imageWrap}>
+    <div ref={ref} className={classNames(styles.imageWrap, inView && styles.in)}>
       <Image
-        src="/images/payment-311a7a.png"
-        alt="Оплата заказа"
+        src={image.src}
+        alt={image.alt}
         fill
         className={styles.image}
         sizes="(max-width: 768px) 100vw, 335px"
