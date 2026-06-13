@@ -24,12 +24,12 @@ type DatabaseCtor = new (filename: string) => Database;
  * better-sqlite3 не установлен/не собран — вызывающий код перейдёт на JSON-фолбэк.
  */
 export function createSqliteStore(): ContentStore {
-  // Специфайер вычисляется из env (с дефолтом), чтобы бандлер (Turbopack) не
-  // разрешал нативный модуль статически и оставил его динамическим require.
-  // Локально модуль может отсутствовать — тогда вызывающий код перейдёт на JSON.
+  // better-sqlite3 указан в serverExternalPackages — литеральный require остаётся
+  // внешним (не бандлится). Динамический специфайер, наоборот, Turbopack заменяет
+  // на «too dynamic»-заглушку, из-за чего SQLite не поднимался. Вызов ленивый и в
+  // try/catch у getStore: если модуль не собран локально — перейдём на JSON-фолбэк.
   const require = createRequire(import.meta.url);
-  const moduleName = process.env.WC_SQLITE_MODULE ?? ['better', 'sqlite3'].join('-');
-  const Database = require(moduleName) as DatabaseCtor;
+  const Database = require('better-sqlite3') as DatabaseCtor;
 
   ensureDir(DATA_DIR);
   const db = new Database(path.join(DATA_DIR, 'content.db'));
