@@ -91,6 +91,81 @@
   color: #a1a1aa;
 }
 
+/* String array — compact inline rows */
+.stringList {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.stringRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.stringIndex {
+  flex: 0 0 20px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #a1a1aa;
+  text-align: right;
+}
+
+.stringInput {
+  flex: 1 1 auto;
+}
+
+.stringActions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 0 0 auto;
+}
+
+.reorder {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  font-size: 14px;
+  color: #71717a;
+  background: #f4f4f5;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  line-height: 1;
+
+  &:hover:not(:disabled) {
+    background: #e4e4e7;
+    color: #3f3f46;
+  }
+
+  &:disabled {
+    opacity: 0.3;
+    cursor: default;
+  }
+}
+
+.removeSmall {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  font-size: 13px;
+  color: #dc2626;
+  background: #fef2f2;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+
+  &:hover {
+    background: #fee2e2;
+  }
+}
+
 .add {
   align-self: flex-start;
   padding: 8px 14px;

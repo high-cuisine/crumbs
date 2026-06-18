@@ -1,5 +1,6 @@
 import { getPageContent } from '@/server/content/repository';
 import { listCookies } from '@/server/catalog/repository';
+import { Container } from '@/shared/UI/Container';
 import { Footer } from '@/shared/widgets/Footer';
 import { PageHeader } from '@/shared/widgets/PageHeader';
 import { ConstructorBanner } from './components/ConstructorBanner';
@@ -24,6 +25,11 @@ export function ConstructorPage() {
           cookies={cookies}
           cardDoodle={boxes.cardDoodle}
         />
+        {data.customNote && (
+          <Container>
+            <p className={styles.customNote}>{data.customNote}</p>
+          </Container>
+        )}
         <ConstructorBanner
           bannerText={data.bannerText}
           blobLeft={data.bannerBlobLeft}

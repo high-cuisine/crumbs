@@ -2,8 +2,8 @@
 @import '../../../../shared/styles/mixins';
 
 .section {
-  padding-top: 48px;
-  padding-bottom: 80px;
+  padding-top: $section-gap-desktop;
+  padding-bottom: $section-gap-desktop-end;
 }
 
 .grid {
@@ -15,6 +15,11 @@
 }
 
 @include respond(tablet) {
+  .section {
+    padding-top: $section-gap-tablet;
+    padding-bottom: $section-gap-tablet;
+  }
+
   .grid {
     gap: 40px 32px;
   }
@@ -22,8 +27,8 @@
 
 @include respond(mobile) {
   .section {
-    padding-top: 32px;
-    padding-bottom: 48px;
+    padding-top: $section-gap-mobile;
+    padding-bottom: $section-gap-mobile;
   }
 
   .grid {

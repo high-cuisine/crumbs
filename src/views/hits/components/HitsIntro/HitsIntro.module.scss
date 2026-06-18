@@ -5,11 +5,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 45px;
+  padding-top: 0;
+  padding-bottom: $section-gap-desktop;
 }
 
 .title {
-  margin: 0;
+  margin: 32px 0 0;
   font-family: $font-chicoree;
   font-weight: 700;
   font-size: 30px;
@@ -31,7 +32,8 @@
 
 .banner {
   width: 100%;
-  margin-top: 28px;
+  margin-top: 48px;
+  margin-bottom: $section-gap-desktop;
   border-radius: 38px;
   overflow: hidden;
 }
@@ -45,6 +47,7 @@
 @include respond(tablet) {
   .title {
     font-size: 26px;
+    margin-top: 24px;
   }
 
   .subtitle {
@@ -53,16 +56,19 @@
 
   .banner {
     border-radius: 28px;
+    margin-bottom: $section-gap-tablet;
   }
 }
 
 @include respond(mobile) {
   .intro {
-    padding-top: 28px;
+    padding-top: 0;
+    padding-bottom: $section-gap-mobile;
   }
 
   .title {
     font-size: 22px;
+    margin-top: 20px;
   }
 
   .subtitle {
@@ -70,7 +76,8 @@
   }
 
   .banner {
-    margin-top: 20px;
+    margin-top: 32px;
+    margin-bottom: $section-gap-mobile;
     border-radius: 20px;
   }
 }

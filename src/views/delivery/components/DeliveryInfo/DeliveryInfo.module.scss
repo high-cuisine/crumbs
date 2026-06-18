@@ -1,0 +1,139 @@
+@import '../../../../shared/styles/variables';
+@import '../../../../shared/styles/mixins';
+
+.section {
+  padding: $section-gap-desktop 0;
+  background: $color-pink-section;
+}
+
+.inner {
+  display: flex;
+  flex-direction: row;
+  gap: 64px;
+  align-items: flex-start;
+}
+
+.block {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.title {
+  margin: 0 0 24px;
+  font-family: $font-body;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: $color-text-dark;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.item {
+  font-family: $font-body;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: $color-text;
+  padding-left: 20px;
+  position: relative;
+
+  &::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: $color-text-muted;
+  }
+}
+
+.steps {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  counter-reset: none;
+}
+
+.step {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.stepNum {
+  flex: 0 0 32px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: $color-text-dark;
+  color: #fff;
+  font-family: $font-body;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.stepText {
+  font-family: $font-body;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: $color-text;
+  padding-top: 6px;
+}
+
+@include respond(tablet) {
+  .section {
+    padding: $section-gap-tablet 0;
+  }
+
+  .inner {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .title {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+}
+
+@include respond(mobile) {
+  .section {
+    padding: $section-gap-mobile 0;
+  }
+
+  .inner {
+    gap: 32px;
+  }
+
+  .title {
+    font-size: 18px;
+  }
+
+  .item,
+  .stepText {
+    font-size: 15px;
+  }
+
+  .stepNum {
+    flex: 0 0 28px;
+    width: 28px;
+    height: 28px;
+    font-size: 13px;
+  }
+}

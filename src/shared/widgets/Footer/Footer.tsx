@@ -19,7 +19,11 @@ export function Footer({ common }: FooterProps) {
         <h2 className={styles.title}>{footer.title}</h2>
 
         <a href={site.phoneHref} className={styles.phone}>
-          <img src={footer.phoneIcon} alt="" className={styles.phoneIcon} aria-hidden="true" />
+          <span
+            className={styles.phoneIcon}
+            style={{ '--mask-url': `url(${footer.phoneIcon})` } as React.CSSProperties}
+            aria-hidden="true"
+          />
           <span className={styles.phoneText}>{site.phone}</span>
         </a>
 
@@ -28,10 +32,18 @@ export function Footer({ common }: FooterProps) {
 
         <div className={styles.socials}>
           <Link href={socials.vk} className={styles.socialLink} aria-label="VK">
-            <img src={footer.vkIcon} alt="" className={styles.socialIcon} aria-hidden="true" />
+            <span
+              className={styles.socialIcon}
+              style={{ '--mask-url': `url(${footer.vkIcon})` } as React.CSSProperties}
+              aria-hidden="true"
+            />
           </Link>
           <Link href={socials.telegram} className={styles.socialLink} aria-label="Telegram">
-            <img src={footer.telegramIcon} alt="" className={styles.socialIcon} aria-hidden="true" />
+            <span
+              className={styles.socialIcon}
+              style={{ '--mask-url': `url(${footer.telegramIcon})` } as React.CSSProperties}
+              aria-hidden="true"
+            />
           </Link>
         </div>
       </Container>

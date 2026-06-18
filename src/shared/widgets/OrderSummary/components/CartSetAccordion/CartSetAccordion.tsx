@@ -56,7 +56,7 @@ export function CartSetAccordion({ item, defaultOpen = false, onRemove }: CartSe
               </div>
               <div className={styles.cookieBody}>
                 <p className={styles.cookieName}>{cookie.name}</p>
-                <p className={styles.cookieQty}>{quantity} × {cookie.price.toLocaleString('ru-RU')} ₽</p>
+                <p className={styles.cookieQty}>{quantity} шт.</p>
               </div>
             </li>
           ))}

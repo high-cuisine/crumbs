@@ -16,4 +16,6 @@ export const HITS_PAGE_PRODUCTS = [
   { id: 'ferrero', name: 'Ferrero Core', image: HITS_PAGE_ASSETS.productFerrero },
   { id: 'pistachio', name: 'Pistachio\nBerry Melt', image: HITS_PAGE_ASSETS.productPistachio },
   { id: 'lemon', name: 'Lemon Berry\nBliss', image: HITS_PAGE_ASSETS.productLemon },
+  { id: 'biscoff', name: 'Biscoff\nLava', image: HITS_PAGE_ASSETS.productBiscoff },
+  { id: 'cherry', name: 'Вишнёвое', image: HITS_PAGE_ASSETS.productCherry },
 ] as const;

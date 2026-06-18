@@ -151,6 +151,7 @@ export const zBoxes = z.object({
     bannerText: z.string(),
     bannerBlobLeft: zSrc,
     bannerBlobRight: zSrc,
+    customNote: z.string().optional(),
     sizes: z.array(
       z.object({ id: z.string(), name: z.string(), image: zSrc, href: z.string() }),
     ),
@@ -170,6 +171,10 @@ export const zDelivery = z.object({
   fields: z.array(z.object({ id: z.string(), label: z.string(), span: z.enum(['full', 'half']) })),
   banner: zImg,
   map: zImg,
+  scheduleTitle: z.string().optional(),
+  schedule: z.array(z.string()).optional(),
+  stepsTitle: z.string().optional(),
+  steps: z.array(z.string()).optional(),
 });
 
 // ───────────────────────── /cart ─────────────────────────

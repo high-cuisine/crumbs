@@ -1,3 +1,5 @@
+@import '../../shared/styles/variables';
+
 .page {
   display: flex;
   flex-direction: column;
@@ -10,4 +12,14 @@
   flex: 1 1 auto;
   max-width: 100vw;
   overflow-x: hidden;
+}
+
+.customNote {
+  margin: 0 0 48px;
+  font-family: $font-body;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: $color-text-muted;
+  text-align: center;
 }

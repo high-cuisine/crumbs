@@ -10,6 +10,7 @@
   padding: 24px;
   background: #dddddd;
   overflow: hidden;
+  margin-bottom: $section-gap-desktop;
 }
 
 .text {
@@ -45,6 +46,10 @@
 }
 
 @include respond(tablet) {
+  .banner {
+    margin-bottom: $section-gap-tablet;
+  }
+
   .text {
     font-size: 24px;
   }
@@ -64,6 +69,7 @@
   .banner {
     min-height: 132px;
     padding: 20px 24px;
+    margin-bottom: $section-gap-mobile;
   }
 
   .text {

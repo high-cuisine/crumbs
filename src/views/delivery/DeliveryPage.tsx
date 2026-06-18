@@ -2,6 +2,7 @@ import { getPageContent } from '@/server/content/repository';
 import { Footer } from '@/shared/widgets/Footer';
 import { PageHeader } from '@/shared/widgets/PageHeader';
 import { DeliveryHero } from './components/DeliveryHero';
+import { DeliveryInfo } from './components/DeliveryInfo';
 import { DeliveryMap } from './components/DeliveryMap';
 import styles from './DeliveryPage.module.scss';
 
@@ -14,6 +15,12 @@ export function DeliveryPage() {
       <PageHeader common={common} />
       <main className={styles.main}>
         <DeliveryHero title={data.title} banner={data.banner} />
+        <DeliveryInfo
+          scheduleTitle={data.scheduleTitle}
+          schedule={data.schedule}
+          stepsTitle={data.stepsTitle}
+          steps={data.steps}
+        />
         <DeliveryMap
           map={data.map}
           formTitle={data.formTitle}

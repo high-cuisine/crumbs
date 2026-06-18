@@ -2,7 +2,7 @@
 
 import { useState, useTransition } from 'react';
 import { classNames } from '@/shared/helpers/classNames';
-import { humanizeKey, isImageField, isMultiline } from '../../helpers/fields';
+import { humanizeKey, isImageField, isMultiline, isStringArray } from '../../helpers/fields';
 import { ImageField } from '../ImageField';
 import styles from './ContentEditor.module.scss';
 
@@ -57,6 +57,16 @@ type NodeProps = {
 
 function FieldNode({ label, name, value, onChange, root }: NodeProps) {
   if (Array.isArray(value)) {
+    if (isStringArray(value)) {
+      return (
+        <StringArrayNode
+          label={label}
+          name={name}
+          value={value as string[]}
+          onChange={(next) => onChange(next)}
+        />
+      );
+    }
     return <ArrayNode label={label} name={name} value={value} onChange={onChange} />;
   }
   if (value !== null && typeof value === 'object') {
@@ -142,6 +152,78 @@ function ObjectNode({ label, value, onChange, root }: ObjectNodeProps) {
           onChange={(next) => onChange({ ...value, [key]: next })}
         />
       ))}
+    </fieldset>
+  );
+}
+
+type StringArrayNodeProps = {
+  label: string;
+  name: string;
+  value: string[];
+  onChange: (value: string[]) => void;
+};
+
+function StringArrayNode({ label, name, value, onChange }: StringArrayNodeProps) {
+  function move(index: number, direction: -1 | 1) {
+    const next = [...value];
+    const target = index + direction;
+    if (target < 0 || target >= next.length) return;
+    [next[index], next[target]] = [next[target], next[index]];
+    onChange(next);
+  }
+
+  return (
+    <fieldset className={styles.group}>
+      <legend className={styles.legend}>{humanizeKey(label || name)}</legend>
+      <div className={styles.stringList}>
+        {value.map((item, index) => (
+          <div key={index} className={styles.stringRow}>
+            <span className={styles.stringIndex}>{index + 1}</span>
+            <input
+              type="text"
+              className={classNames(styles.input, styles.stringInput)}
+              value={item}
+              placeholder="Введите текст…"
+              onChange={(event) => {
+                const next = [...value];
+                next[index] = event.target.value;
+                onChange(next);
+              }}
+            />
+            <div className={styles.stringActions}>
+              <button
+                type="button"
+                className={styles.reorder}
+                onClick={() => move(index, -1)}
+                disabled={index === 0}
+                title="Переместить вверх"
+              >
+                ↑
+              </button>
+              <button
+                type="button"
+                className={styles.reorder}
+                onClick={() => move(index, 1)}
+                disabled={index === value.length - 1}
+                title="Переместить вниз"
+              >
+                ↓
+              </button>
+              <button
+                type="button"
+                className={styles.removeSmall}
+                onClick={() => onChange(value.filter((_, i) => i !== index))}
+                title="Удалить"
+              >
+                ✕
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+      <button type="button" className={styles.add} onClick={() => onChange([...value, ''])}>
+        + Добавить строку
+      </button>
     </fieldset>
   );
 }

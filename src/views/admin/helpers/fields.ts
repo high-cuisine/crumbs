@@ -40,6 +40,11 @@ export function isMultiline(value: string): boolean {
   return value.includes('\n') || value.length > 60;
 }
 
+/** Массив строк — рендерится в компактном режиме (без вложенного fieldset). */
+export function isStringArray(value: unknown[]): boolean {
+  return value.length === 0 || value.every((item) => typeof item === 'string');
+}
+
 const LABELS: Record<string, string> = {
   site: 'Контакты сайта',
   name: 'Название',
@@ -102,6 +107,19 @@ const LABELS: Record<string, string> = {
   constructor: 'Конструктор',
   span: 'Ширина поля (full/half)',
   crumbs: 'Крошки',
+  price: 'Цена (₽)',
+  count: 'Количество',
+  required: 'Обязательное поле',
+  placeholder: 'Подсказка в поле',
+  type: 'Тип поля',
+  schedule: 'График работы',
+  scheduleTitle: 'Заголовок расписания',
+  steps: 'Шаги оформления заказа',
+  stepsTitle: 'Заголовок шагов',
+  customNote: 'Текст об индивидуальном заказе',
+  mini: 'Мини-набор',
+  signature: 'Фирменный набор',
+  party: 'Праздничный набор',
 };
 
 /** Человекочитаемая подпись для ключа. */
@@ -123,6 +141,15 @@ const SECTION_TITLES: Record<string, string> = {
   cart: 'Страница «Корзина»',
 };
 
+const SECTION_DESCRIPTIONS: Record<string, string> = {
+  common: 'Телефон, email, ссылки на соцсети и навигационные ссылки в шапке и подвале сайта.',
+  home: 'Главная страница: большой баннер, блок «Почему мы», промо-видео, блок хитов.',
+  hits: 'Страница «Хиты»: заголовок, баннер, список продуктов с фото и описаниями.',
+  boxes: 'Страница «Коробки»: наборы с ценами, конструктор, подсказка об индивидуальных заказах.',
+  delivery: 'Страница «Доставка»: условия, расписание работы, шаги оформления заказа.',
+  cart: 'Страница «Корзина»: тексты формы заказа и кнопок.',
+};
+
 export const ADMIN_SECTIONS = [
   'common',
   'home',
@@ -134,4 +161,8 @@ export const ADMIN_SECTIONS = [
 
 export function sectionTitle(key: string): string {
   return SECTION_TITLES[key] ?? key;
+}
+
+export function sectionDescription(key: string): string {
+  return SECTION_DESCRIPTIONS[key] ?? '';
 }

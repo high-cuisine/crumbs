@@ -6,8 +6,8 @@
   overflow: hidden;
   min-height: 396px;
   padding: 54px 0 78px;
-  background: $color-gray-footer;
-  color: $color-white;
+  background: $color-pink-section;
+  color: $color-text;
 
   a {
     color: inherit;
@@ -51,7 +51,6 @@
   font-size: 30px;
   font-weight: 700;
   line-height: 1.219;
-  color: $color-white;
 }
 
 .phone {
@@ -66,7 +65,6 @@
   font-size: 30px;
   font-weight: 700;
   line-height: 1.366;
-  color: $color-white;
   white-space: nowrap;
   transition: opacity $transition-base;
 
@@ -80,11 +78,19 @@
   flex: 0 0 auto;
   width: 26px;
   height: 24px;
+  background-color: currentColor;
+  -webkit-mask-image: var(--mask-url);
+  mask-image: var(--mask-url);
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
 }
 
 .phoneText {
   display: inline-block;
-  color: $color-white;
   font-family: var(--font-chicoree-em),"Chicoree Em.",sans-serif;
   font-size: clamp(1.5625rem, 1.4525rem + 0.4695vw, 1.875rem);
 }
@@ -95,7 +101,6 @@
   font-size: 30px;
   font-weight: 700;
   line-height: 1.366;
-  color: $color-white;
 }
 
 .address {
@@ -104,7 +109,6 @@
   font-size: 20px;
   font-weight: 500;
   line-height: 1.219;
-  color: $color-white;
 }
 
 .socials {
@@ -115,10 +119,19 @@
 }
 
 .socialIcon {
-  display: block;
+  display: inline-block;
   flex: 0 0 auto;
-  width: auto;
-  height: auto;
+  width: 28px;
+  height: 28px;
+  background-color: currentColor;
+  -webkit-mask-image: var(--mask-url);
+  mask-image: var(--mask-url);
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
 }
 
 .socialLink {

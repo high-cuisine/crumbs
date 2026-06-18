@@ -6,4 +6,6 @@ export const HITS_PAGE_ASSETS = {
   productFerrero: '/images/hits/product-ferrero.png',
   productPistachio: '/images/product-1.png',
   productLemon: '/images/product-5.png',
+  productBiscoff: '/images/hits/product-biscoff-69b495.png',
+  productCherry: '/images/boxes/cookie-cherry.png',
 } as const;
