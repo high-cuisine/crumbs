@@ -14,6 +14,12 @@ export async function proxy(request: NextRequest) {
     return NextResponse.next();
   }
 
+  // Server Actions (POST с Next-Action) нельзя редиректить — клиент ждёт RSC-ответ,
+  // а не HTML страницы логина. Пропускаем: saveSection сам проверяет сессию и вызывает redirect().
+  if (request.headers.has('next-action')) {
+    return NextResponse.next();
+  }
+
   const token = request.cookies.get(SESSION_COOKIE)?.value;
   if (await verifySessionToken(token)) {
     return NextResponse.next();

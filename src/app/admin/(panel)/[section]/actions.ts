@@ -1,6 +1,9 @@
 'use server';
 
+import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
+import { SESSION_COOKIE, verifySessionToken } from '@/server/auth/session';
 import { savePageContent } from '@/server/content/repository';
 import { PAGE_KEYS, type PageKey } from '@/server/content/schema';
 
@@ -16,6 +19,12 @@ const REVALIDATE_PATHS: Record<PageKey, string[]> = {
 };
 
 export async function saveSection(section: string, json: string): Promise<SaveResult> {
+  const store = await cookies();
+  const token = store.get(SESSION_COOKIE)?.value;
+  if (!(await verifySessionToken(token))) {
+    redirect('/admin/login');
+  }
+
   if (!PAGE_KEYS.includes(section as PageKey)) {
     return { ok: false, error: 'Неизвестный раздел' };
   }
