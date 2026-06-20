@@ -1,3 +1,4 @@
+import { uid } from '@/shared/helpers/uid';
 import type { Cookie, ResolvedCookieSet } from '@/server/catalog/schema';
 
 export type CartSetItem = {
@@ -31,7 +32,7 @@ export function resolvedSetToCartItem(
   options?: { boxTemplateId?: string },
 ): CartItem {
   return {
-    id: `${kind}-${set.id}-${crypto.randomUUID()}`,
+    id: `${kind}-${set.id}-${uid()}`,
     kind,
     setId: kind === 'preset' ? set.id : undefined,
     boxTemplateId: options?.boxTemplateId,
