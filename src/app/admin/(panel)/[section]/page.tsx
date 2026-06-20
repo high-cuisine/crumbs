@@ -1,6 +1,4 @@
-import { cookies } from 'next/headers';
-import { notFound, redirect } from 'next/navigation';
-import { SESSION_COOKIE, verifySessionToken } from '@/server/auth/session';
+import { notFound } from 'next/navigation';
 import { getPageContent } from '@/server/content/repository';
 import { PAGE_KEYS, type PageKey } from '@/server/content/schema';
 import { ContentEditor } from '@/views/admin/components/ContentEditor';
@@ -13,12 +11,6 @@ export const dynamic = 'force-dynamic';
 type PageParams = Promise<{ section: string }>;
 
 export default async function AdminSectionPage({ params }: { params: PageParams }) {
-  const store = await cookies();
-  const token = store.get(SESSION_COOKIE)?.value;
-  if (!(await verifySessionToken(token))) {
-    redirect('/admin/login');
-  }
-
   const { section } = await params;
   if (!PAGE_KEYS.includes(section as PageKey)) {
     notFound();

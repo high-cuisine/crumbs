@@ -1,7 +1,6 @@
 'use server';
 
 import { cookies } from 'next/headers';
-import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
 import { SESSION_COOKIE, verifySessionToken } from '@/server/auth/session';
 import { savePageContent } from '@/server/content/repository';
@@ -22,7 +21,7 @@ export async function saveSection(section: string, json: string): Promise<SaveRe
   const store = await cookies();
   const token = store.get(SESSION_COOKIE)?.value;
   if (!(await verifySessionToken(token))) {
-    redirect('/admin/login');
+    return { ok: false, error: 'Сессия истекла — войдите снова' };
   }
 
   if (!PAGE_KEYS.includes(section as PageKey)) {
