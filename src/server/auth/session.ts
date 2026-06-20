@@ -92,3 +92,12 @@ export function verifyPassword(input: string): boolean {
 }
 
 export const SESSION_MAX_AGE = SESSION_TTL_SECONDS;
+
+/**
+ * Кука сессии должна быть Secure только если соединение реально по HTTPS —
+ * иначе браузер просто не сохранит/не отправит её (сайт за http без TLS-проксі
+ * тогда вечно кидает на /admin/login после любого действия).
+ */
+export function isHttpsRequest(headers: Headers): boolean {
+  return headers.get('x-forwarded-proto') === 'https';
+}

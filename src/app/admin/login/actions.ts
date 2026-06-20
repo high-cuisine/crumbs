@@ -1,11 +1,12 @@
 'use server';
 
-import { cookies } from 'next/headers';
+import { cookies, headers } from 'next/headers';
 import { redirect } from 'next/navigation';
 import {
   SESSION_COOKIE,
   SESSION_MAX_AGE,
   createSessionToken,
+  isHttpsRequest,
   verifyPassword,
 } from '@/server/auth/session';
 
@@ -24,7 +25,7 @@ export async function loginAction(formData: FormData) {
   store.set(SESSION_COOKIE, token, {
     httpOnly: true,
     sameSite: 'lax',
-    secure: process.env.NODE_ENV === 'production',
+    secure: isHttpsRequest(await headers()),
     path: '/',
     maxAge: SESSION_MAX_AGE,
   });
