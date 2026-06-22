@@ -80,7 +80,7 @@
 
 @include respond(mobile) {
   .main {
-    padding: 24px 0 48px;
+    padding: $section-gap-mobile 0;
   }
 
   .name {

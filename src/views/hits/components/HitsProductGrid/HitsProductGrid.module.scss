@@ -27,8 +27,8 @@
 
 @include respond(mobile) {
   .section {
-    padding-top: $section-gap-mobile;
-    padding-bottom: $section-gap-mobile;
+    padding-top: 0;
+    padding-bottom: 0;
   }
 
   .grid {

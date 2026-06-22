@@ -15,7 +15,7 @@
 
 @include respond(mobile) {
   .section {
-    padding-bottom: 48px;
+    padding-bottom: 0;
   }
 
   .grid {

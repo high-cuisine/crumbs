@@ -72,7 +72,7 @@
 
 @include respond(mobile) {
   .section {
-    padding: 0;
+    @include mobile-section-gap;
   }
 
   .inner {
@@ -89,8 +89,8 @@
   .content {
     align-items: flex-start;
     justify-content: flex-start;
-    gap: 28px;
-    padding: 60px 44px 52px;
+    gap: 20px;
+    padding: calc($section-gap-mobile / 2) $container-padding-mobile;
     background: transparent;
   }
 

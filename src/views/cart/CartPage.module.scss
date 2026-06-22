@@ -21,7 +21,7 @@
 
 @include respond(mobile) {
   .inner {
-    padding-top: 32px;
-    padding-bottom: 56px;
+    padding-top: $section-gap-mobile;
+    padding-bottom: $section-gap-mobile;
   }
 }

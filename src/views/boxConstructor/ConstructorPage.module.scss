@@ -1,4 +1,5 @@
 @import '../../shared/styles/variables';
+@import '../../shared/styles/mixins';
 
 .page {
   display: flex;
@@ -12,6 +13,10 @@
   flex: 1 1 auto;
   max-width: 100vw;
   overflow-x: hidden;
+
+  @include respond(mobile) {
+    @include mobile-page-stack;
+  }
 }
 
 .customNote {
@@ -22,4 +27,8 @@
   line-height: 1.5;
   color: $color-text-muted;
   text-align: center;
+
+  @include respond(mobile) {
+    margin: 0;
+  }
 }

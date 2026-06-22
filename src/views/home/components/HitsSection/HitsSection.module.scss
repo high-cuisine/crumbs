@@ -54,7 +54,7 @@
 
 @include respond(mobile) {
   .section {
-    padding: $section-gap-mobile 0;
+    @include mobile-section-gap;
   }
 
   .title {

@@ -196,7 +196,7 @@
 @include respond(mobile) {
   .footer {
     min-height: auto;
-    padding: 42px 0 34px;
+    padding: calc($section-gap-mobile / 2) 0 34px;
   }
 
   .decorLeft {

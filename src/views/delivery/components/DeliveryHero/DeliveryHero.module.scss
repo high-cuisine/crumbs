@@ -29,12 +29,12 @@
 
 @include respond(mobile) {
   .hero {
-    padding-top: 28px;
-    padding-bottom: 40px;
+    padding-top: 0;
+    padding-bottom: 0;
   }
 
   .title {
-    margin-bottom: 24px;
+    margin-bottom: calc($section-gap-mobile / 2);
     font-size: 28px;
   }
 }

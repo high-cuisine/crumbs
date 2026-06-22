@@ -79,7 +79,7 @@
 
 @include respond(mobile) {
   .section {
-    padding: $section-gap-mobile 0 0;
+    @include mobile-section-gap;
   }
 
   .inner {
@@ -93,7 +93,7 @@
     order: 1;
     align-items: flex-start;
     text-align: left;
-    padding: $section-gap-mobile $container-padding-mobile;
+    padding: 0 $container-padding-mobile;
     gap: 16px;
 
     @media(max-width: 768px) {

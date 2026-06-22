@@ -26,6 +26,7 @@
 
 @include respond(mobile) {
   .main {
+    @include mobile-page-stack;
     padding-top: $section-gap-mobile;
     padding-bottom: $section-gap-mobile;
   }
